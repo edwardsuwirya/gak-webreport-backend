@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Country" table="m_country">
+        <meta attribute="class-description">
+            table master country
+        </meta>
+        <id name="s_countryCode" column="countrycode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <property name="s_countryName" column="countryname" not-null="true" type="string" length="50"
+                  index="m_country_index1"/>
+        <property name="s_countryAreaCode" column="countryareacode" not-null="false" type="string" length="5"/>
+        <property name="i_countryCreateID" column="countrycreateid" not-null="true" type="int"/>
+        <property name="d_countryCreateDate" column="countrycreatedate" not-null="true" type="timestamp"/>
+        <property name="i_countryDeleteID" column="countrydeleteid" not-null="false" type="int"/>
+        <property name="d_countryDeleteDate" column="countrydeletedate" not-null="false" type="timestamp"/>
+        <property name="i_countryUpdateID" column="countryupdateid" not-null="true" type="int"/>
+        <property name="d_countryUpdateDate" column="countryupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_countryActive" column="countryactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>
+        

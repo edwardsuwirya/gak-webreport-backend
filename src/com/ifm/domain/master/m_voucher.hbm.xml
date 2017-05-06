@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Voucher" table="m_voucher">
+        <meta attribute="class-description">
+            table master voucher
+        </meta>
+        <id name="s_voucherCode" column="vouchercode" type="string" length="30">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="voucher_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_voucherRealCode" column="voucherrealcode" not-null="true" type="string" length="10"/>
+        <property name="s_voucherName" column="vouchername" not-null="true" type="string" length="50"/>
+        <property name="d_voucherPercent" column="voucherpercent" not-null="true" type="big_decimal"/>
+        <property name="d_voucherAmount" column="voucheramount" not-null="true" type="big_decimal"/>
+        <property name="d_voucherExpiredDate" column="voucherexpireddate" not-null="true" type="date"/>
+        <property name="s_voucherStatus" column="voucherstatus" not-null="true" type="string" length="1"/>
+        <property name="i_voucherCreateID" column="vouchercreateid" not-null="true" type="int"/>
+        <property name="d_voucherCreateDate" column="vouchercreatedate" not-null="true" type="timestamp"/>
+        <property name="i_voucherDeleteID" column="voucherdeleteid" not-null="false" type="int"/>
+        <property name="d_voucherDeleteDate" column="voucherdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_voucherUpdateID" column="voucherupdateid" not-null="true" type="int"/>
+        <property name="d_voucherUpdateDate" column="voucherupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_voucherActive" column="voucheractive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

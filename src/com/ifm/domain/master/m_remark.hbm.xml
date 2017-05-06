@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Remark" table="m_remark">
+        <meta attribute="class-description">
+            table master remark
+        </meta>
+        <id name="s_remarkCode" column="remarkcode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="remark_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_remarkRealCode" column="remarkrealcode" not-null="true" type="string" length="10"/>
+        <property name="s_remarkName" column="remarkname" not-null="true" type="string" length="50"/>
+        <property name="i_remarkCreateID" column="remarkcreateid" not-null="true" type="int"/>
+        <property name="d_remarkCreateDate" column="remarkcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_remarkDeleteID" column="remarkdeleteid" not-null="false" type="int"/>
+        <property name="d_remarkDeleteDate" column="remarkdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_remarkUpdateID" column="remarkupdateid" not-null="true" type="int"/>
+        <property name="d_remarkUpdateDate" column="remarkupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_remarkActive" column="remarkactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

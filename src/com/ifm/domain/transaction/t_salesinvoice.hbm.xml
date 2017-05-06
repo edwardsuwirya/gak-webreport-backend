@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_SalesInvoice" table="t_salesinvoice">
+        <meta attribute="class-description">
+            table transaction sales invoice
+        </meta>
+        <id name="s_salesInvoiceNo" column="salesinvoiceno" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="salesinvoice_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="responsibilitycenter" column="salesinvoice_responsibilitycentercode"
+                     class="com.ifm.domain.master.M_ResponsibilityCenter" not-null="true"/>
+        <many-to-one name="currency" column="salesinvoice_currencycode"
+                     class="com.ifm.domain.master.M_Currency" not-null="true"/>
+        <many-to-one name="customer" column="salesinvoice_customercode"
+                     class="com.ifm.domain.master.M_Customer" not-null="true"/>
+        <many-to-one name="receiveorder" column="salesinvoice_receiveorderno"
+                     class="T_ReceiveOrder" not-null="false"/>
+        <many-to-one name="deliveryorder" column="salesinvoice_deliveryorderno"
+                     class="T_DeliveryOrder" not-null="false"/>
+        <many-to-one name="salesorder" column="salesinvoice_salesorderno"
+                     class="T_SalesOrder" not-null="false"/>
+        <many-to-one name="division" column="salesinvoice_divisioncode"
+                     class="com.ifm.domain.master.M_Division" not-null="false"/>
+        <property name="s_salesInvoiceRealNo" column="salesinvoicerealno" not-null="true" type="string" length="40"/>
+        <property name="s_salesInvoiceTaxNo" column="salesinvoicetaxno" not-null="false" type="string" length="40"/>
+        <property name="d_salesInvoiceDate" column="salesinvoicedate" not-null="true" type="timestamp"/>
+        <property name="d_salesInvoiceExRate" column="salesinvoiceexrate" not-null="true" type="big_decimal"/>
+        <property name="s_salesInvoiceAddress" column="salesinvoiceaddress" not-null="false" type="string"
+                  length="500"/>
+        <property name="d_salesInvoiceSubTotal" column="salesinvoicesubtotal" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceDiscount" column="salesinvoicediscount" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceVoucher" column="salesinvoicevoucher" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceTax" column="salesinvoicetax" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoicePph" column="salesinvoicepph" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceServiceCharge" column="salesinvoiceservicecharge" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_salesInvoiceBonus" column="salesinvoicebonus" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceAdditionalCharge1" column="salesinvoiceadditionalcharge1" not-null="false"
+                  type="big_decimal"/>
+        <property name="d_salesInvoiceAdditionalCharge2" column="salesinvoiceadditionalcharge2" not-null="false"
+                  type="big_decimal"/>
+        <property name="d_salesInvoiceGrandTotal" column="salesinvoicegrandtotal" not-null="true" type="big_decimal"/>
+        <property name="s_salesInvoiceStatus" column="salesinvoicestatus" not-null="true" type="string" length="1"/>
+        <property name="i_salesInvoicePrinted" column="salesinvoiceprinted" not-null="true" type="int"/>
+        <property name="s_salesInvoiceNote1" column="salesinvoicenote1" not-null="false" type="string" length="100"/>
+        <property name="s_salesInvoiceNote2" column="salesinvoicenote2" not-null="false" type="string" length="100"/>
+        <property name="s_salesInvoiceNote3" column="salesinvoicenote3" not-null="false" type="string" length="100"/>
+        <property name="i_salesInvoiceCreateID" column="salesinvoicecreateid" not-null="true" type="int"/>
+        <property name="d_salesInvoiceCreateDate" column="salesinvoicecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_salesInvoiceApproveID" column="salesinvoiceapproveid" not-null="false" type="int"/>
+        <property name="d_salesInvoiceApproveDate" column="salesinvoiceapprovedate" not-null="false" type="timestamp"/>
+        <property name="i_salesInvoiceCancelID" column="salesinvoicecancelid" not-null="false" type="int"/>
+        <property name="d_salesInvoiceCancelDate" column="salesinvoicecanceldate" not-null="false" type="timestamp"/>
+        <property name="s_salesInvoiceCancelReason" column="salesinvoicecancelreason" not-null="false" type="string"
+                  length="200"/>
+        <property name="i_salesInvoiceUpdateID" column="salesinvoiceupdateid" not-null="true" type="int"/>
+        <property name="d_salesInvoiceUpdateDate" column="salesinvoiceupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_salesInvoiceActive" column="salesinvoiceactive" not-null="true" type="string" length="1"/>
+        <set name="details"
+             cascade="all">
+            <key column="salesinvoiced_salesinvoiceno"/>
+            <one-to-many class="T_SalesInvoiceD"/>
+        </set>
+        <set name="payments"
+             cascade="all">
+            <key column="salesinvoicepayment_salesinvoiceno"/>
+            <one-to-many class="T_SalesInvoicePayment"/>
+        </set>
+    </class>
+</hibernate-mapping>

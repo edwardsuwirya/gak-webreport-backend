@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Currency" table="m_currency">
+        <meta attribute="class-description">
+            table master currency
+        </meta>
+        <id name="s_currencyCode" column="currencycode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="country" column="currency_countrycode"
+                     class="M_Country" not-null="true"/>
+        <property name="s_currencyName" column="currencyname" not-null="true" type="string" length="50"/>
+        <property name="s_currencySymbol" column="currencysymbol" not-null="false" type="string" length="10"/>
+        <property name="i_currencyCreateID" column="currencycreateid" not-null="true" type="int"/>
+        <property name="d_currencyCreateDate" column="currencycreatedate" not-null="true" type="timestamp"/>
+        <property name="i_currencyDeleteID" column="currencydeleteid" not-null="false" type="int"/>
+        <property name="d_currencyDeleteDate" column="currencydeletedate" not-null="false" type="timestamp"/>
+        <property name="i_currencyUpdateID" column="currencyupdateid" not-null="true" type="int"/>
+        <property name="d_currencyUpdateDate" column="currencyupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_currencyActive" column="currencyactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

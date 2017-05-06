@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_SalesInvoicePayment" table="t_salesinvoicepayment">
+        <meta attribute="class-description">
+            table transaction sales invoice payment
+        </meta>
+        <id name="s_salesInvoicePaymentNo" column="salesinvoicepaymentno" type="string" length="60">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="paymenttype" column="salesinvoicepayment_paymenttypecode"
+                     class="com.ifm.domain.master.M_PaymentType" not-null="true"/>
+        <many-to-one name="cardtype" column="salesinvoicepayment_cardtypecode"
+                     class="com.ifm.domain.master.M_CardType" not-null="false"/>
+        <many-to-one name="bank" column="salesinvoicepayment_bankcode"
+                     class="com.ifm.domain.master.M_Bank" not-null="false"/>
+        <many-to-one name="edc" column="salesinvoicepayment_edccode"
+                     class="com.ifm.domain.master.M_Edc" not-null="false"/>
+        <property name="d_salesInvoicePaymentDate" column="salesinvoicepaymentdate" not-null="true" type="timestamp"/>
+        <property name="s_salesInvoicePaymentCardNo" column="salesinvoicepaymentcardno" not-null="false" type="string"
+                  length="50"/>
+        <property name="d_salesInvoicePaymentAmount" column="salesinvoicepaymentamount" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_salesInvoicePaymentCharge" column="salesinvoicepaymentcharge" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_salesInvoicePaymentPay" column="salesinvoicepaymentpay" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoicePaymentChange" column="salesinvoicepaymentchange" not-null="true"
+                  type="big_decimal"/>
+        <property name="i_salesInvoicePaymentUpdateID" column="salesinvoicepaymentupdateid" not-null="true" type="int"/>
+        <property name="d_salesInvoicePaymentUpdateDate" column="salesinvoicepaymentupdatedate" not-null="true"
+                  type="timestamp"/>
+    </class>
+</hibernate-mapping>

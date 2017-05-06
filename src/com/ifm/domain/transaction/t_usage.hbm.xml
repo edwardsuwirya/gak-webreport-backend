@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_Usage" table="t_usage">
+        <meta attribute="class-description">
+            table transaction usage
+        </meta>
+        <id name="s_usageNo" column="usageno" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="usage_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="usageType" column="usage_usagetypecode"
+                     class="com.ifm.domain.master.M_UsageType" not-null="true"/>
+        <many-to-one name="warehouse" column="usage_warehousecode"
+                     class="com.ifm.domain.master.M_Warehouse" not-null="true"/>
+        <many-to-one name="users" column="usage_employeeusercode"
+                     class="com.ifm.domain.master.M_Employee" not-null="false"/>
+        <property name="s_usageRealNo" column="usagerealno" not-null="true" type="string" length="40"/>
+        <property name="d_usageDate" column="usagedate" not-null="true" type="timestamp"/>
+        <property name="s_usageStatus" column="usagestatus" not-null="true" type="string" length="1"/>
+        <property name="i_usagePrinted" column="usageprinted" not-null="true" type="int"/>
+        <property name="s_usageNote1" column="usagenote1" not-null="false" type="string" length="100"/>
+        <property name="s_usageNote2" column="usagenote2" not-null="false" type="string" length="100"/>
+        <property name="s_usageNote3" column="usagenote3" not-null="false" type="string" length="100"/>
+        <property name="i_usageCreateID" column="usagecreateid" not-null="true" type="int"/>
+        <property name="d_usageCreateDate" column="usagecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_usageApproveID" column="usageapproveid" not-null="false" type="int"/>
+        <property name="d_usageApproveDate" column="usageapprovedate" not-null="false" type="timestamp"/>
+        <property name="i_usageCancelID" column="usagecancelid" not-null="false" type="int"/>
+        <property name="d_usageCancelDate" column="usagecanceldate" not-null="false" type="timestamp"/>
+        <property name="s_usageCancelReason" column="usagecancelreason" not-null="false" type="string" length="200"/>
+        <property name="i_usageUpdateID" column="usageupdateid" not-null="true" type="int"/>
+        <property name="d_usageUpdateDate" column="usageupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_usageActive" column="usageactive" not-null="true" type="string" length="1"/>
+        <set name="details"
+             cascade="all">
+            <key column="usaged_usageno"/>
+            <one-to-many class="T_UsageD"/>
+        </set>
+    </class>
+</hibernate-mapping>

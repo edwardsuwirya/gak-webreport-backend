@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.utility">
+    <class name="M_Registry" table="m_registry">
+        <meta attribute="class-description">
+            table master registry
+        </meta>
+        <id name="s_registryCode" column="registrycode" type="string" length="100">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="registry_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="project" column="registry_projectid"
+                     class="com.ifm.domain.security.M_Project" not-null="true"/>
+        <property name="s_registryRealCode" column="registryrealcode" not-null="true" type="string" length="50"/>
+        <property name="s_registryName" column="registryname" not-null="true" type="string" length="100"/>
+        <property name="s_registryValue" column="registryvalue" not-null="true" type="string" length="500"/>
+        <property name="i_registryCreateID" column="registrycreateid" not-null="true" type="int"/>
+        <property name="d_registryCreateDate" column="registrycreatedate" not-null="true" type="timestamp"/>
+        <property name="i_registryDeleteID" column="registrydeleteid" not-null="false" type="int"/>
+        <property name="d_registryDeleteDate" column="registrydeletedate" not-null="false" type="timestamp"/>
+        <property name="i_registryUpdateID" column="registryupdateid" not-null="true" type="int"/>
+        <property name="d_registryUpdateDate" column="registryupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_registryActive" column="registryactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

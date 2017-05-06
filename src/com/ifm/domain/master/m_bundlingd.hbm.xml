@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_BundlingD" table="m_bundlingd">
+        <meta attribute="class-description">
+            table master bundling detail
+        </meta>
+        <id name="s_bundlingDCode" column="bundlingdcode" type="string" length="140">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="article" column="bundlingd_articlecode"
+                     class="M_Article" not-null="true"/>
+        <many-to-one name="uom" column="bundlingd_uomcode"
+                     class="M_Uom" not-null="true"/>
+        <property name="d_bundlingDQty" column="bundlingdqty" not-null="true" type="big_decimal" scale="5"
+                  precision="19"/>
+        <property name="i_bundlingDUpdateID" column="bundlingdupdateid" not-null="true" type="int"/>
+        <property name="d_bundlingDUpdateDate" column="bundlingdupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

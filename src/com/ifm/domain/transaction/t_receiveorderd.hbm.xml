@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_ReceiveOrderD" table="t_receiveorderd">
+        <meta attribute="class-description">
+            table transaction receive order d
+        </meta>
+        <id name="s_receiveOrderDNo" column="receiveorderdno" type="string" length="60">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="uom" column="receiveorderd_uomcode"
+                     class="com.ifm.domain.master.M_Uom" not-null="false"/>
+        <property name="i_receiveOrderDSequence" column="receiveorderdsequence" not-null="true" type="int"/>
+        <property name="i_receiveOrderDItemType" column="receiveorderditemtype" not-null="true" type="int"/>
+        <property name="s_receiveOrderDItemCode" column="receiveorderditemcode" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_receiveOrderDItemRealCode" column="receiveorderditemrealcode" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_receiveOrderDItemName" column="receiveorderditemname" not-null="true" type="string"
+                  length="100"/>
+        <property name="s_receiveOrderDSerialNo" column="receiveorderdserialno" not-null="false" type="string"
+                  length="50"/>
+        <property name="d_receiveOrderDQtyFactor1" column="receiveorderdqtyfactor1" not-null="true" type="big_decimal"/>
+        <property name="d_receiveOrderDQtyFactor2" column="receiveorderdqtyfactor2" not-null="true" type="big_decimal"/>
+        <property name="d_receiveOrderDQty" column="receiveorderdqty" not-null="true" type="big_decimal"/>
+        <property name="d_receiveOrderDQtyDelivered" column="receiveorderdqtydelivered" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_receiveOrderDQtyPaid" column="receiveorderdqtypaid" not-null="true" type="big_decimal"/>
+        <property name="d_receiveOrderDPrice" column="receiveorderdprice" not-null="true" type="big_decimal"/>
+        <property name="d_receiveOrderDTotal" column="receiveorderdtotal" not-null="true" type="big_decimal"/>
+        <property name="s_receiveOrderDComment" column="receiveorderdcomment" not-null="false" type="string"
+                  length="200"/>
+        <property name="b_receiveOrderDPictureFile" column="receiveorderdpicturefile" not-null="false" type="binary"
+                  length="1000000"/>
+        <property name="i_receiveOrderDUpdateID" column="receiveorderdupdateid" not-null="true" type="int"/>
+        <property name="d_receiveOrderDUpdateDate" column="receiveorderdupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

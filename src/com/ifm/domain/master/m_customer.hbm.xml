@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Customer" table="m_customer">
+        <meta attribute="class-description">
+            table master customer
+        </meta>
+        <id name="s_customerCode" column="customercode" type="string" length="40">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="customer_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="responsibilitycenter" column="customer_responsibilitycentercode"
+                     class="M_ResponsibilityCenter" not-null="true"/>
+        <many-to-one name="customergroup" column="customer_customergroupcode"
+                     class="M_CustomerGroup" not-null="true"/>
+        <many-to-one name="religion" column="customer_religionid"
+                     class="M_Religion" not-null="false"/>
+        <many-to-one name="maritalstatus" column="customer_maritalstatuscode"
+                     class="M_MaritalStatus" not-null="false"/>
+        <many-to-one name="membertype" column="customer_membertypecode"
+                     class="M_MemberType" not-null="false"/>
+        <property name="d_customerRegisterDate" column="customerregisterdate" not-null="true" type="timestamp"/>
+        <property name="s_customerRealCode" column="customerrealcode" not-null="true" type="string" length="30"/>
+        <property name="s_customerTitle" column="customertitle" not-null="false" type="string" length="5"/>
+        <property name="s_customerName" column="customername" not-null="true" type="string" length="50"/>
+        <property name="s_customerGender" column="customergender" not-null="false" type="string" length="1"/>
+        <property name="d_customerBirthDate" column="customerbirthdate" not-null="false" type="date"/>
+        <property name="s_customerBirthPlace" column="customerbirthplace" not-null="false" type="string" length="50"/>
+        <property name="s_customerCompany" column="customercompany" not-null="true" type="string" length="1"/>
+        <property name="s_customerOccupation" column="customeroccupation" not-null="false" type="string" length="50"/>
+        <property name="s_customerCellPhone1" column="customercellphone1" not-null="false" type="string" length="20"/>
+        <property name="s_customerCellPhone2" column="customercellphone2" not-null="false" type="string" length="20"/>
+        <property name="s_customerCellPhone3" column="customercellphone3" not-null="false" type="string" length="20"/>
+        <property name="s_customerEmail1" column="customeremail1" not-null="false" type="string" length="50"/>
+        <property name="s_customerEmail2" column="customeremail2" not-null="false" type="string" length="50"/>
+        <property name="s_customerEmail3" column="customeremail3" not-null="false" type="string" length="50"/>
+        <property name="s_customerSiup" column="customersiup" not-null="false" type="string" length="50"/>
+        <property name="s_customerTdp" column="customertdp" not-null="false" type="string" length="50"/>
+        <property name="s_customerNppkp" column="customernppkp" not-null="false" type="string" length="50"/>
+        <property name="s_customerNpwp" column="customernpwp" not-null="false" type="string" length="50"/>
+        <property name="s_customerSpecialInstruction" column="customerspecialinstruction" not-null="false" type="string"
+                  length="100"/>
+        <property name="d_customerFactor1" column="customerfactor1" not-null="true" type="big_decimal"/>
+        <property name="s_customerOperator1" column="customeroperator1" not-null="true" type="string" length="1"/>
+        <property name="d_customerFactor2" column="customerfactor2" not-null="true" type="big_decimal"/>
+        <property name="s_customerOperator2" column="customeroperator2" not-null="true" type="string" length="1"/>
+        <property name="s_customerMember" column="customermember" not-null="false" type="string" length="1"/>
+        <property name="d_customerMemberRegisterDate" column="customermemberregisterdate" not-null="false" type="date"/>
+        <property name="d_customerMemberExpiredDate" column="customermemberexpireddate" not-null="false" type="date"/>
+        <property name="i_customerMemberPoint" column="customermemberpoint" not-null="false" type="int"/>
+        <property name="i_customerMemberQtyFreeArticle" column="customermemberqtyfreearticle" not-null="false"
+                  type="int"/>
+        <property name="s_customerMemberFreePeriod" column="customermemberfreeperiod" not-null="false" type="string"
+                  length="20"/>
+        <property name="b_customerMemberPictureFile" column="customermemberpicturefile" not-null="false" type="binary"
+                  length="1000000"/>
+        <property name="i_customerCreateID" column="customercreateid" not-null="true" type="int"/>
+        <property name="d_customerCreateDate" column="customercreatedate" not-null="true" type="timestamp"/>
+        <property name="i_customerDeleteID" column="customerdeleteid" not-null="false" type="int"/>
+        <property name="d_customerDeleteDate" column="customerdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_customerUpdateID" column="customerupdateid" not-null="true" type="int"/>
+        <property name="d_customerUpdateDate" column="customerupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_customerActive" column="customeractive" not-null="true" type="string" length="1"/>
+        <set name="addresses"
+             cascade="all">
+            <key column="customeraddress_customercode"/>
+            <one-to-many class="M_CustomerAddress"/>
+        </set>
+        <set name="idcards"
+             cascade="all">
+            <key column="customeridcard_customercode"/>
+            <one-to-many class="M_CustomerIDCard"/>
+        </set>
+        <set name="articles"
+             cascade="all">
+            <key column="customerarticle_customercode"/>
+            <one-to-many class="M_CustomerArticle"/>
+        </set>
+        <set name="contacts"
+             cascade="all">
+            <key column="customercontact_customercode"/>
+            <one-to-many class="M_CustomerContact"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_ArticleResponsibilityCenterPrice" table="m_articleresponsibilitycenterprice">
+        <meta attribute="class-description">
+            table price article (article's child) in RC
+        </meta>
+        <id name="s_articleResponsibilityCenterPriceCode"
+            column="articleresponsibilitycenterpricecode"
+            type="string"
+            length="120">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="responsibilitycenter"
+                     column="articleresponsibilitycenterprice_responsibilitycentercode"
+                     class="M_ResponsibilityCenter"
+                     not-null="true"/>
+
+        <property name="d_articleResponsibilityCenterPrice"
+                  column="articleresponsibilitycenterprice"
+                  not-null="true"
+                  type="big_decimal"/>
+        <property name="i_articleResponsibilityCenterPriceCreateID"
+                  column="articleresponsibilitycentercreateid"
+                  not-null="true"
+                  type="int"/>
+        <property name="d_articleResponsibilityCenterPriceCreateDate"
+                  column="articleresponsibilitycentercreatedate"
+                  not-null="true"
+                  type="timestamp"/>
+        <property name="i_articleResponsibilityCenterPriceUpdateID"
+                  column="articleresponsibilitycenterupdateid"
+                  not-null="true"
+                  type="int"/>
+        <property name="d_articleResponsibilityCenterPriceUpdateDate"
+                  column="articleresponsibilitycenterupdatedate"
+                  not-null="true"
+                  type="timestamp"/>
+    </class>
+</hibernate-mapping>

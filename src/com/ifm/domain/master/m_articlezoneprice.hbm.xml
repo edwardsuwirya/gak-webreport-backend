@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_ArticleZonePrice" table="m_articlezoneprice">
+        <meta attribute="class-description">
+            table price article (article's child) in Zone
+        </meta>
+        <id name="s_articleZonePriceCode"
+            column="articlezonepricecode"
+            type="string"
+            length="120">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="zone"
+                     column="articlezoneprice_zonecode"
+                     class="M_Zone"
+                     not-null="true"/>
+
+        <property name="d_articleZonePrice"
+                  column="articlezoneprice"
+                  not-null="true"
+                  type="big_decimal"/>
+        <property name="i_articleZonePriceCreateID"
+                  column="articlezonecreateid"
+                  not-null="true"
+                  type="int"/>
+        <property name="d_articleZonePriceCreateDate"
+                  column="articlezonecreatedate"
+                  not-null="true"
+                  type="timestamp"/>
+        <property name="i_articleZonePriceUpdateID"
+                  column="articlezoneupdateid"
+                  not-null="true"
+                  type="int"/>
+        <property name="d_articleZonePriceUpdateDate"
+                  column="articlezoneupdatedate"
+                  not-null="true"
+                  type="timestamp"/>
+    </class>
+</hibernate-mapping>

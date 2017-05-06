@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_StockCard" table="t_stockcard">
+        <meta attribute="class-description">
+            table stock card
+        </meta>
+        <composite-id>
+            <key-property name="s_tscTransNo" column="tsctransno" type="string" length="50"/>
+            <key-many-to-one name="company" column="tsc_companycode"
+                             class="com.ifm.domain.master.M_Company"/>
+            <key-many-to-one name="transaction" column="tsc_transactioncode"
+                             class="com.ifm.domain.master.M_Transaction"/>
+            <key-property name="i_tscItemSequence" column="tsctransitemsequence" type="int"/>
+            <key-many-to-one name="article" column="tsc_articlecode"
+                             class="com.ifm.domain.master.M_Article"/>
+            <key-property name="s_tscTransSerialNo" column="tsctransserialno" type="string" length="50"/>
+        </composite-id>
+        <property name="s_tscTransRealNo" column="tsctransrealno" not-null="true" type="string" length="40"/>
+        <property name="s_tscTransRefNo" column="tsctransrefno" not-null="false" type="string" length="50"/>
+        <property name="s_tscTransRefRealNo" column="tsctransrefrealno" not-null="false" type="string" length="40"/>
+        <many-to-one name="warehouse" column="tsc_warehousecode"
+                     class="com.ifm.domain.master.M_Warehouse" not-null="true"/>
+        <many-to-one name="room" column="tsc_roomcode"
+                     class="com.ifm.domain.master.M_Room" not-null="false"/>
+        <many-to-one name="rack" column="tsc_rackcode"
+                     class="com.ifm.domain.master.M_Rack" not-null="false"/>
+        <many-to-one name="racklevel" column="tsc_racklevelcode"
+                     class="com.ifm.domain.master.M_RackLevel" not-null="false"/>
+        <many-to-one name="racksection" column="tsc_racksectioncode"
+                     class="com.ifm.domain.master.M_RackSection" not-null="false"/>
+        <property name="d_tscTransDate" column="tsctransdate" not-null="true" type="timestamp"/>
+        <property name="d_tscTransQty" column="tsctransqty" not-null="true" type="big_decimal" scale="5"
+                  precision="19"/>
+        <many-to-one name="qtyuom" column="tsc_qtyuomcode"
+                     class="com.ifm.domain.master.M_Uom" not-null="true"/>
+        <property name="d_tscTransUomMultiplier" column="tsctransuommultiplier" not-null="true" type="big_decimal"
+                  scale="5" precision="19"/>
+        <property name="d_tscTransQtyInventory" column="tsctransqtyinventory" not-null="true" type="big_decimal"
+                  scale="5" precision="19"/>
+        <many-to-one name="qtyuominventory" column="tsc_qtyuominventorycode"
+                     class="com.ifm.domain.master.M_Uom" not-null="true"/>
+        <property name="s_tscTransCOGS" column="tsctranscogs" not-null="true" type="string" length="1"/>
+        <property name="d_tscTransQtyUnitCost" column="tsctransqtyunitcost" not-null="true" type="big_decimal"/>
+        <property name="d_tscTransQtyInventoryUnitCost" column="tsctransqtyinventoryunitcost" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_tscTransQtyInventoryAvgCost" column="tsctransqtyinventoryavgcost" not-null="true"
+                  type="big_decimal"/>
+        <property name="i_tscTransCreateID" column="tsctranscreateid" not-null="true" type="int"/>
+        <property name="d_tscTransCreateDate" column="tsctranscreatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

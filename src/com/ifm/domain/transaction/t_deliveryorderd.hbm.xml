@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_DeliveryOrderD" table="t_deliveryorderd">
+        <meta attribute="class-description">
+            table transaction delivery order d
+        </meta>
+        <id name="s_deliveryOrderDNo" column="deliveryorderdno" type="string" length="60">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="article" column="deliveryorderd_articlecode"
+                     class="com.ifm.domain.master.M_Article" not-null="true"/>
+        <many-to-one name="uom" column="deliveryorderd_uomcode"
+                     class="com.ifm.domain.master.M_Uom" not-null="true"/>
+        <many-to-one name="coating" column="deliveryorderd_coatingcode"
+                     class="com.ifm.domain.master.M_Coating" not-null="false"/>
+        <property name="i_deliveryorderDSequence" column="deliveryorderdsequence" not-null="true" type="int"/>
+        <property name="i_deliveryorderDRefSequence" column="deliveryorderdrefsequence" not-null="false" type="int"/>
+        <property name="s_deliveryorderDSerialNo" column="deliveryorderdserialno" not-null="false" type="string"
+                  length="50"/>
+        <property name="d_deliveryorderDQty" column="deliveryorderdqty" not-null="true" type="big_decimal"/>
+        <property name="d_deliveryorderDQtyRetur" column="deliveryorderdqtyretur" not-null="true" type="big_decimal"/>
+        <property name="d_deliveryorderDLengthDefault" column="deliveryorderdlengthdefault" not-null="false"
+                  type="big_decimal"/>
+        <property name="s_deliveryOrderDDescription1" column="deliveryorderddescription1" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_deliveryOrderDDescription2" column="deliveryorderddescription2" not-null="false" type="string"
+                  length="100"/>
+        <property name="i_deliveryorderDUpdateID" column="deliveryorderdupdateid" not-null="true" type="int"/>
+        <property name="d_deliveryorderDUpdateDate" column="deliveryorderdupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

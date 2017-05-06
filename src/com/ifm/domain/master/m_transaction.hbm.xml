@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Transaction" table="m_transaction">
+        <meta attribute="class-description">
+            table master transaksi
+        </meta>
+        <id name="s_transactionCode" column="transactioncode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <property name="s_transactionName" column="transactionname" not-null="true" type="string" length="50"/>
+        <property name="s_transactionStockType" column="transactionstocktype" not-null="false" type="string"
+                  length="2"/>
+        <property name="i_transactionCreateID" column="transactioncreateid" not-null="true" type="int"/>
+        <property name="d_transactionCreateDate" column="transactioncreatedate" not-null="true" type="timestamp"/>
+        <property name="i_transactionDeleteID" column="transactiondeleteid" not-null="false" type="int"/>
+        <property name="d_transactionDeleteDate" column="transactiondeletedate" not-null="false" type="timestamp"/>
+        <property name="i_transactionUpdateID" column="transactionupdateid" not-null="true" type="int"/>
+        <property name="d_transactionUpdateDate" column="transactionupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_transactionActive" column="transactionactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

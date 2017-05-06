@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Bank" table="m_bank">
+        <meta attribute="class-description">
+            table master bank
+        </meta>
+        <id name="s_bankCode" column="bankcode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="bank_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_bankRealCode" column="bankrealcode" not-null="true" type="string" length="10"/>
+        <property name="s_bankName" column="bankname" not-null="true" type="string" length="50"/>
+        <property name="i_bankCreateID" column="bankcreateid" not-null="true" type="int"/>
+        <property name="d_bankCreateDate" column="bankcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_bankDeleteID" column="bankdeleteid" not-null="false" type="int"/>
+        <property name="d_bankDeleteDate" column="bankdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_bankUpdateID" column="bankupdateid" not-null="true" type="int"/>
+        <property name="d_bankUpdateDate" column="bankupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_bankActive" column="bankactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

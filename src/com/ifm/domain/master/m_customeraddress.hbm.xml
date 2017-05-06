@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_CustomerAddress" table="m_customeraddress">
+        <meta attribute="class-description">
+            table master customer address
+        </meta>
+        <id name="s_customerAddressCode" column="customeraddresscode" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="ownedstatus" column="customeraddress_ownedstatusid"
+                     class="M_OwnedStatus" not-null="false"/>
+        <many-to-one name="city" column="customeraddress_citycode"
+                     class="M_City" not-null="true"/>
+        <property name="s_customerAddress_ZipCode" column="customeraddress_zipcode" not-null="false" type="string"
+                  length="10"/>
+        <property name="i_customerAddressNo" column="customeraddressno" not-null="true" type="int"/>
+        <property name="s_customerAddressName" column="customeraddressname" not-null="true" type="string" length="200"/>
+        <property name="s_customerAddressPhone" column="customeraddressphone" not-null="false" type="string"
+                  length="20"/>
+        <property name="i_customerAddressCreateID" column="customeraddresscreateid" not-null="true" type="int"/>
+        <property name="d_customerAddressCreateDate" column="customeraddresscreatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="i_customerAddressDeleteID" column="customeraddressdeleteid" not-null="false" type="int"/>
+        <property name="d_customerAddressDeleteDate" column="customeraddressdeletedate" not-null="false"
+                  type="timestamp"/>
+        <property name="i_customerAddressUpdateID" column="customeraddressupdateid" not-null="true" type="int"/>
+        <property name="d_customerAddressUpdateDate" column="customeraddressupdatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="s_customerAddressActive" column="customeraddressactive" not-null="true" type="string"
+                  length="1"/>
+    </class>
+</hibernate-mapping>

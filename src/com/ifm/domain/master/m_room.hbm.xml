@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Room" table="m_room">
+        <meta attribute="class-description">
+            table master room
+        </meta>
+        <id name="s_roomCode" column="roomcode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="room_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_roomRealCode" column="roomrealcode" not-null="true" type="string" length="10"/>
+        <property name="s_roomName" column="roomname" not-null="true" type="string" length="50"/>
+        <property name="i_roomCreateID" column="roomcreateid" not-null="true" type="int"/>
+        <property name="d_roomCreateDate" column="roomcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_roomDeleteID" column="roomdeleteid" not-null="false" type="int"/>
+        <property name="d_roomDeleteDate" column="roomdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_roomUpdateID" column="roomupdateid" not-null="true" type="int"/>
+        <property name="d_roomUpdateDate" column="roomupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_roomActive" column="roomactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

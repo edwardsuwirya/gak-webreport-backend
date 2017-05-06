@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_EmployeeJobPosition" table="m_employeejobposition">
+        <meta attribute="class-description">
+            table master employee job position
+        </meta>
+        <id name="s_employeeJobPositionCode" column="employeejobpositioncode" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="division" column="employeejobposition_divisioncode"
+                     class="M_Division" not-null="true"/>
+        <many-to-one name="department" column="employeejobposition_departmentcode"
+                     class="M_Department" not-null="true"/>
+        <many-to-one name="section" column="employeejobposition_sectioncode"
+                     class="M_Section" not-null="true"/>
+        <many-to-one name="jobposition" column="employeejobposition_jobpositioncode"
+                     class="M_JobPosition" not-null="true"/>
+        <many-to-one name="supervisor" column="employeejobpositionsupervisor_employeecode"
+                     class="M_Employee" not-null="false"/>
+        <property name="i_employeeJobPositionNo" column="employeejobpositionno" not-null="true" type="int"/>
+        <property name="i_employeeJobPositionCreateID" column="employeejobpositioncreateid" not-null="true" type="int"/>
+        <property name="d_employeeJobPositionCreateDate" column="employeejobpositioncreatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="i_employeeJobPositionDeleteID" column="employeejobpositiondeleteid" not-null="false"
+                  type="int"/>
+        <property name="d_employeeJobPositionDeleteDate" column="employeejobpositiondeletedate" not-null="false"
+                  type="timestamp"/>
+        <property name="i_employeeJobPositionUpdateID" column="employeejobpositionupdateid" not-null="true" type="int"/>
+        <property name="d_employeeJobPositionUpdateDate" column="employeejobpositionupdatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="s_employeeJobPositionActive" column="employeejobpositionactive" not-null="true" type="string"
+                  length="1"/>
+    </class>
+</hibernate-mapping>

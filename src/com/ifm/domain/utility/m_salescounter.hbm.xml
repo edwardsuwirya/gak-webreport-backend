@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.utility">
+    <class name="M_SalesCounter" table="m_salescounter">
+        <meta attribute="class-description">
+            table sales counter
+        </meta>
+        <id name="s_companyCode" column="msc_companycode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <property name="s_mscCustomerAutoNumber" column="msccustomerautonumber" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscCustomerPrefix" column="msccustomerprefix" not-null="true" type="string" length="5"/>
+        <property name="s_mscCustomerArea" column="msccustomerarea" not-null="true" type="string" length="1"/>
+        <property name="s_mscCustomerRC" column="msccustomerrc" not-null="true" type="string" length="1"/>
+        <property name="s_mscCustomerYear" column="msccustomeryear" not-null="true" type="string" length="1"/>
+        <property name="s_mscCustomerMonth" column="msccustomermonth" not-null="true" type="string" length="1"/>
+        <property name="s_mscCustomerSeparator" column="msccustomerseparator" not-null="true" type="string" length="1"/>
+        <property name="i_mscCustomerDigit" column="msccustomerdigit" not-null="true" type="int"/>
+        <property name="s_mscQuotationAutoNumber" column="mscquotationautonumber" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscQuotationPrefix" column="mscquotationprefix" not-null="true" type="string" length="5"/>
+        <property name="s_mscQuotationRC" column="mscquotationrc" not-null="true" type="string" length="1"/>
+        <property name="s_mscQuotationYear" column="mscquotationyear" not-null="true" type="string" length="1"/>
+        <property name="s_mscQuotationMonth" column="mscquotationmonth" not-null="true" type="string" length="1"/>
+        <property name="s_mscQuotationSeparator" column="mscquotationseparator" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_mscQuotationDigit" column="mscquotationdigit" not-null="true" type="int"/>
+        <property name="s_mscQuotationDeliveryTime" column="mscquotationdeliverytime" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscQuotationDeliveryPoint" column="mscquotationdeliverypoint" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscQuotationDeliveryValidity" column="mscquotationvalidity" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscQuotationShipping" column="mscquotationshipping" not-null="false" type="string"
+                  length="100"/>
+        <property name="i_mscQuotationMaxArticle" column="mscquotationmaxarticle" not-null="false" type="int"/>
+        <property name="s_mscReceiveOrderAutoNumber" column="mscreceiveorderautonumber" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscReceiveOrderPrefix" column="mscreceiveorderprefix" not-null="true" type="string"
+                  length="5"/>
+        <property name="s_mscReceiveOrderRC" column="mscreceiveorderrc" not-null="true" type="string" length="1"/>
+        <property name="s_mscReceiveOrderYear" column="mscreceiveorderyear" not-null="true" type="string" length="1"/>
+        <property name="s_mscReceiveOrderMonth" column="mscreceiveordermonth" not-null="true" type="string" length="1"/>
+        <property name="s_mscReceiveOrderSeparator" column="mscreceiveorderseparator" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_mscReceiveOrderDigit" column="mscreceiveorderdigit" not-null="true" type="int"/>
+        <property name="s_mscReceiveOrderNote1" column="mscreceiveordernote1" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscReceiveOrderNote2" column="mscreceiveordernote2" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscReceiveOrderNote3" column="mscreceiveordernote3" not-null="false" type="string"
+                  length="100"/>
+        <property name="i_mscReceiveOrderMaxArticle" column="mscreceiveordermaxarticle" not-null="false" type="int"/>
+        <property name="s_mscSalesOrderAutoNumber" column="mscsalesorderautonumber" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscSalesOrderPrefix" column="mscsalesorderprefix" not-null="true" type="string" length="5"/>
+        <property name="s_mscSalesOrderRC" column="mscsalesorderrc" not-null="true" type="string" length="1"/>
+        <property name="s_mscSalesOrderYear" column="mscsalesorderyear" not-null="true" type="string" length="1"/>
+        <property name="s_mscSalesOrderMonth" column="mscsalesordermonth" not-null="true" type="string" length="1"/>
+        <property name="s_mscSalesOrderSeparator" column="mscsalesorderseparator" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_mscSalesOrderDigit" column="mscsalesorderdigit" not-null="true" type="int"/>
+        <property name="s_mscSalesOrderNote1" column="mscsalesordernote1" not-null="false" type="string" length="100"/>
+        <property name="s_mscSalesOrderNote2" column="mscsalesordernote2" not-null="false" type="string" length="100"/>
+        <property name="s_mscSalesOrderNote3" column="mscsalesordernote3" not-null="false" type="string" length="100"/>
+        <property name="i_mscSalesOrderMaxArticle" column="mscsalesordermaxarticle" not-null="false" type="int"/>
+        <property name="s_mscDeliveryOrderAutoNumber" column="mscdeliveryorderautonumber" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscDeliveryOrderPrefix" column="mscdeliveryorderprefix" not-null="true" type="string"
+                  length="5"/>
+        <property name="s_mscDeliveryOrderWarehouse" column="mscdeliveryorderwarehouse" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscDeliveryOrderYear" column="mscdeliveryorderyear" not-null="true" type="string" length="1"/>
+        <property name="s_mscDeliveryOrderMonth" column="mscdeliveryordermonth" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscDeliveryOrderSeparator" column="mscdeliveryorderseparator" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_mscDeliveryOrderDigit" column="mscdeliveryorderdigit" not-null="true" type="int"/>
+        <property name="s_mscDeliveryOrderTaxAutoNumber" column="mscdeliveryordertaxautonumber" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_mscDeliveryOrderTaxPrefix" column="mscdeliveryordertaxprefix" not-null="true" type="string"
+                  length="5"/>
+        <property name="s_mscDeliveryOrderTaxWarehouse" column="mscdeliveryordertaxwarehouse" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_mscDeliveryOrderTaxYear" column="mscdeliveryordertaxyear" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscDeliveryOrderTaxMonth" column="mscdeliveryordertaxmonth" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscDeliveryOrderTaxSeparator" column="mscdeliveryordertaxseparator" not-null="true"
+                  type="string" length="1"/>
+        <property name="i_mscDeliveryOrderTaxDigit" column="mscdeliveryordertaxdigit" not-null="true" type="int"/>
+        <property name="s_mscDeliveryOrderNote1" column="mscdeliveryordernote1" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscDeliveryOrderNote2" column="mscdeliveryordernote2" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscDeliveryOrderNote3" column="mscdeliveryordernote3" not-null="false" type="string"
+                  length="100"/>
+        <property name="i_mscDeliveryOrderMaxArticle" column="mscdeliveryordermaxarticle" not-null="false" type="int"/>
+        <property name="s_mscPackingListAutoNumber" column="mscpackinglistautonumber" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscPackingListPrefix" column="mscpackinglistprefix" not-null="true" type="string" length="5"/>
+        <property name="s_mscPackingListWarehouse" column="mscpackinglistwarehouse" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscPackingListYear" column="mscpackinglistyear" not-null="true" type="string" length="1"/>
+        <property name="s_mscPackingListMonth" column="mscpackinglistmonth" not-null="true" type="string" length="1"/>
+        <property name="s_mscPackingListSeparator" column="mscpackinglistseparator" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_mscPackingListDigit" column="mscpackinglistdigit" not-null="true" type="int"/>
+        <property name="s_mscPackingListNote1" column="mscpackinglistnote1" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscPackingListNote2" column="mscpackinglistnote2" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscPackingListNote3" column="mscpackinglistnote3" not-null="false" type="string"
+                  length="100"/>
+        <property name="i_mscPackingListMaxArticle" column="mscpackinglistmaxarticle" not-null="false" type="int"/>
+        <property name="s_mscSalesInvoiceAutoNumber" column="mscsalesinvoiceautonumber" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscSalesInvoicePrefix" column="mscsalesinvoiceprefix" not-null="true" type="string"
+                  length="5"/>
+        <property name="s_mscSalesInvoiceDivision" column="mscsalesinvoicedivision" not-null="false" type="string"
+                  length="1"/>
+        <property name="s_mscSalesInvoiceRC" column="mscsalesinvoicerc" not-null="true" type="string" length="1"/>
+        <property name="s_mscSalesInvoiceYear" column="mscsalesinvoiceyear" not-null="true" type="string" length="1"/>
+        <property name="s_mscSalesInvoiceMonth" column="mscsalesinvoicemonth" not-null="true" type="string" length="1"/>
+        <property name="s_mscSalesInvoiceSeparator" column="mscsalesinvoiceseparator" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_mscSalesInvoiceDigit" column="mscsalesinvoicedigit" not-null="true" type="int"/>
+        <property name="s_mscSalesInvoiceCharge1Desc" column="mscsalesinvoicecharge1desc" not-null="false" type="string"
+                  length="20"/>
+        <property name="s_mscSalesInvoiceCharge2Desc" column="mscsalesinvoicecharge2desc" not-null="false" type="string"
+                  length="20"/>
+        <property name="s_mscSalesInvoiceTaxAutoNumber" column="mscsalesinvoicetaxautonumber" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_mscSalesInvoiceTaxPrefix" column="mscsalesinvoicetaxprefix" not-null="true" type="string"
+                  length="5"/>
+        <property name="s_mscSalesInvoiceTaxDivision" column="mscsalesinvoicetaxdivision" not-null="false" type="string"
+                  length="1"/>
+        <property name="s_mscSalesInvoiceTaxRC" column="mscsalesinvoicetaxrc" not-null="true" type="string" length="1"/>
+        <property name="s_mscSalesInvoiceTaxYear" column="mscsalesinvoicetaxyear" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscSalesInvoiceTaxMonth" column="mscsalesinvoicetaxmonth" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscSalesInvoiceTaxSeparator" column="mscsalesinvoicetaxseparator" not-null="true"
+                  type="string" length="1"/>
+        <property name="i_mscSalesInvoiceTaxDigit" column="mscsalesinvoicetaxdigit" not-null="true" type="int"/>
+        <property name="s_mscSalesInvoiceNote1" column="mscsalesinvoicenote1" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscSalesInvoiceNote2" column="mscsalesinvoicenote2" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscSalesInvoiceNote3" column="mscsalesinvoicenote3" not-null="false" type="string"
+                  length="100"/>
+        <property name="i_mscSalesInvoiceMaxArticle" column="mscsalesinvoicemaxarticle" not-null="false" type="int"/>
+        <property name="s_mscSalesReturAutoNumber" column="mscsalesreturautonumber" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscSalesReturPrefix" column="mscsalesreturprefix" not-null="true" type="string" length="5"/>
+        <property name="s_mscSalesReturRC" column="mscsalesreturrc" not-null="true" type="string" length="1"/>
+        <property name="s_mscSalesReturYear" column="mscsalesreturyear" not-null="true" type="string" length="1"/>
+        <property name="s_mscSalesReturMonth" column="mscsalesreturmonth" not-null="true" type="string" length="1"/>
+        <property name="s_mscSalesReturSeparator" column="mscsalesreturseparator" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_mscSalesReturDigit" column="mscsalesreturdigit" not-null="true" type="int"/>
+        <property name="s_mscSalesReturNote1" column="mscsalesreturnote1" not-null="false" type="string" length="100"/>
+        <property name="s_mscSalesReturNote2" column="mscsalesreturnote2" not-null="false" type="string" length="100"/>
+        <property name="s_mscSalesReturNote3" column="mscsalesreturnote3" not-null="false" type="string" length="100"/>
+        <property name="i_mscSalesReturMaxArticle" column="mscsalesReturmaxarticle" not-null="false" type="int"/>
+        <property name="s_mscSalesWorkOrderAutoNumber" column="mscsalesworkorderautonumber" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_mscSalesWorkOrderPrefix" column="mscsalesworkorderprefix" not-null="true" type="string"
+                  length="5"/>
+        <property name="s_mscSalesWorkOrderRC" column="mscsalesworkorderrc" not-null="true" type="string" length="1"/>
+        <property name="s_mscSalesWorkOrderYear" column="mscsalesworkorderyear" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscSalesWorkOrderMonth" column="mscsalesworkordermonth" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mscSalesWorkOrderSeparator" column="mscsalesworkorderseparator" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_mscSalesWorkOrderDigit" column="mscsalesworkorderdigit" not-null="true" type="int"/>
+        <property name="s_mscSalesWorkOrderNote1" column="mscsalesworkordernote1" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscSalesWorkOrderNote2" column="mscsalesworkordernote2" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_mscSalesWorkOrderNote3" column="mscsalesworkordernote3" not-null="false" type="string"
+                  length="100"/>
+        <property name="i_mscSalesWorkOrderMaxArticle" column="mscsalesworkordermaxarticle" not-null="false"
+                  type="int"/>
+        <property name="i_mscCreateID" column="msccreateid" not-null="true" type="int"/>
+        <property name="d_mscCreateDate" column="msccreatedate" not-null="true" type="timestamp"/>
+        <property name="i_mscUpdateID" column="mscupdateid" not-null="true" type="int"/>
+        <property name="d_mscUpdateDate" column="mscupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

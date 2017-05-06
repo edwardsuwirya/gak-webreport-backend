@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.utility">
+    <class name="T_ExportServerToClient" table="t_exportservertoclient">
+        <meta attribute="class-description">
+            table system log automatic export server to client
+        </meta>
+        <id name="i_testcID" column="testcid" type="int">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="company" column="testc_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="responsibilitycenter" column="testc_responsibilitycentercode"
+                     class="com.ifm.domain.master.M_ResponsibilityCenter" not-null="true"/>
+        <property name="s_testcLocalServerName" column="testclocalservername" not-null="true" type="string"
+                  length="100"/>
+        <property name="s_testcLocalDBName" column="testclocaldbname" not-null="true" type="string" length="50"/>
+        <property name="d_testcDate" column="testcdate" not-null="true" type="timestamp"/>
+        <property name="s_testcTable" column="testctable" not-null="true" type="string" length="100"/>
+        <property name="s_testcStatus" column="testcstatus" not-null="true" type="string" length="1"/>
+        <property name="s_testcDescription" column="testcdescription" not-null="false" type="string" length="100"/>
+    </class>
+</hibernate-mapping>

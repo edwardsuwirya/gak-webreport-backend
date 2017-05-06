@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_EmployeeFamilyMember" table="m_employeefamilymember">
+        <meta attribute="class-description">
+            table master employee family member
+        </meta>
+        <id name="s_employeeFamilyMemberCode" column="employeefamilymembercode" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="familymember" column="employeefamilymember_familymemberid"
+                     class="M_FamilyMember" not-null="true"/>
+        <property name="i_employeeFamilyMemberNo" column="employeefamilymemberno" not-null="true" type="int"/>
+        <property name="s_employeeFamilyMemberName" column="employeefamilymembername" not-null="true" type="string"
+                  length="50"/>
+        <property name="d_employeeFamilyMemberBirthdate" column="employeefamilymemberbirthdate" not-null="true"
+                  type="date"/>
+        <property name="s_employeeFamilyMemberGender" column="employeefamilymembergender" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_employeeFamilyMemberCreateID" column="employeefamilymembercreateid" not-null="true"
+                  type="int"/>
+        <property name="d_employeeFamilyMemberCreateDate" column="employeefamilymembercreatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="i_employeeFamilyMemberDeleteID" column="employeefamilymemberdeleteid" not-null="false"
+                  type="int"/>
+        <property name="d_employeeFamilyMemberDeleteDate" column="employeefamilymemberdeletedate" not-null="false"
+                  type="timestamp"/>
+        <property name="i_employeeFamilyMemberUpdateID" column="employeefamilymemberupdateid" not-null="true"
+                  type="int"/>
+        <property name="d_employeeFamilyMemberUpdateDate" column="employeefamilymemberupdatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="s_employeeFamilyMemberActive" column="employeefamilymemberactive" not-null="true" type="string"
+                  length="1"/>
+    </class>
+</hibernate-mapping> 
+       

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_ReceiveOrderPayment" table="t_receiveorderpayment">
+        <meta attribute="class-description">
+            table transaction sales invoice payment
+        </meta>
+        <id name="s_receiveOrderPaymentNo" column="receiveorderpaymentno" type="string" length="60">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="paymenttype" column="receiveorderpayment_paymenttypecode"
+                     class="com.ifm.domain.master.M_PaymentType" not-null="true"/>
+        <many-to-one name="cardtype" column="receiveorderpayment_cardtypecode"
+                     class="com.ifm.domain.master.M_CardType" not-null="false"/>
+        <many-to-one name="bank" column="receiveorderpayment_bankcode"
+                     class="com.ifm.domain.master.M_Bank" not-null="false"/>
+        <many-to-one name="edc" column="receiveorderpayment_edccode"
+                     class="com.ifm.domain.master.M_Edc" not-null="false"/>
+        <property name="d_receiveOrderPaymentDate" column="receiveorderpaymentdate" not-null="true" type="timestamp"/>
+        <property name="s_receiveOrderPaymentCardNo" column="receiveorderpaymentcardno" not-null="false" type="string"
+                  length="50"/>
+        <property name="d_receiveOrderPaymentAmount" column="receiveorderpaymentamount" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_receiveOrderPaymentCharge" column="receiveorderpaymentcharge" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_receiveOrderPaymentPay" column="receiveorderpaymentpay" not-null="true" type="big_decimal"/>
+        <property name="d_receiveOrderPaymentChange" column="receiveorderpaymentchange" not-null="true"
+                  type="big_decimal"/>
+        <property name="i_receiveOrderPaymentUpdateID" column="receiveorderpaymentupdateid" not-null="true" type="int"/>
+        <property name="d_receiveOrderPaymentUpdateDate" column="receiveorderpaymentupdatedate" not-null="true"
+                  type="timestamp"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_QuotationD" table="t_quotationd">
+        <meta attribute="class-description">
+            table transaction quotation d
+        </meta>
+        <id name="s_quotationDNo" column="quotationdno" type="string" length="60">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="article" column="quotationd_articlecode"
+                     class="com.ifm.domain.master.M_Article" not-null="true"/>
+        <many-to-one name="brand" column="quotationd_brandcode"
+                     class="com.ifm.domain.master.M_Brand" not-null="false"/>
+        <many-to-one name="coating" column="quotationd_coatingcode"
+                     class="com.ifm.domain.master.M_Coating" not-null="false"/>
+        <many-to-one name="uom" column="quotationd_uomcode"
+                     class="com.ifm.domain.master.M_Uom" not-null="true"/>
+        <many-to-one name="discount1" column="quotationd_discountcode1"
+                     class="com.ifm.domain.master.M_Discount" not-null="false"/>
+        <many-to-one name="discount2" column="quotationd_discountcode2"
+                     class="com.ifm.domain.master.M_Discount" not-null="false"/>
+        <property name="i_quotationDSequence" column="quotationdsequence" not-null="true" type="int"/>
+        <property name="d_quotationDQty" column="quotationdqty" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDQtyOrder" column="quotationdqtyorder" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDPrice" column="quotationdprice" not-null="true" type="big_decimal"/>
+        <property name="s_quotationDOp1" column="quotationdop1" not-null="true" type="string" length="1"/>
+        <property name="d_quotationDFactor1" column="quotationdfactor1" not-null="true" type="big_decimal"/>
+        <property name="s_quotationDOp2" column="quotationdop2" not-null="true" type="string" length="1"/>
+        <property name="d_quotationDFactor2" column="quotationdfactor2" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDPriceAfterFactor" column="quotationdpriceafterfactor" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_quotationDDiscountPct1" column="quotationddiscountpct1" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDDiscountPrice1" column="quotationddiscountprice1" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_quotationDDiscountPct2" column="quotationddiscountpct2" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDDiscountPrice2" column="quotationddiscountprice2" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_quotationDDiscountAmount" column="quotationddiscountamount" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_quotationDChargePct" column="quotationdchargepct" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDChargeAmount" column="quotationdchargeamount" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDTaxPct" column="quotationdtaxpct" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDTaxAmount" column="quotationdtaxamount" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDPphPct" column="quotationdpphpct" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDPphAmount" column="quotationdpphamount" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDTotal" column="quotationdtotal" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDLengthDefault" column="quotationdlengthdefault" not-null="false"
+                  type="big_decimal"/>
+        <property name="s_quotationDDescription1" column="quotationddescription1" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_quotationDDescription2" column="quotationddescription2" not-null="false" type="string"
+                  length="100"/>
+        <property name="i_quotationDUpdateID" column="quotationdupdateid" not-null="true" type="int"/>
+        <property name="d_quotationDUpdateDate" column="quotationdupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

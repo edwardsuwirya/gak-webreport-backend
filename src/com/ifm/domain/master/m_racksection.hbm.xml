@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_RackSection" table="m_racksection">
+        <meta attribute="class-description">
+            table master rack section
+        </meta>
+        <id name="s_rackSectionCode" column="racksectioncode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="racksection_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_rackSectionRealCode" column="racksectionrealcode" not-null="true" type="string" length="10"/>
+        <property name="s_rackSectionName" column="racksectionname" not-null="true" type="string" length="50"/>
+        <property name="i_rackSectionCreateID" column="racksectioncreateid" not-null="true" type="int"/>
+        <property name="d_rackSectionCreateDate" column="racksectioncreatedate" not-null="true" type="timestamp"/>
+        <property name="i_rackSectionDeleteID" column="racksectiondeleteid" not-null="false" type="int"/>
+        <property name="d_rackSectionDeleteDate" column="racksectiondeletedate" not-null="false" type="timestamp"/>
+        <property name="i_rackSectionUpdateID" column="racksectionupdateid" not-null="true" type="int"/>
+        <property name="d_rackSectionUpdateDate" column="racksectionupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_rackSectionActive" column="racksectionactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

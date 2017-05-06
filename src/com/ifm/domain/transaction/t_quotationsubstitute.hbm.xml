@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_QuotationSubstitute" table="t_quotationsubstitute">
+        <meta attribute="class-description">
+            table transaction quotation substitute
+        </meta>
+        <id name="s_quotationSusbtituteNo" column="quotationsubstituteno" type="string" length="60">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="article" column="quotationsubstitute_articlecode"
+                     class="com.ifm.domain.master.M_Article" not-null="true"/>
+        <many-to-one name="brand" column="quotationsubstitute_brandcode"
+                     class="com.ifm.domain.master.M_Brand" not-null="false"/>
+        <property name="i_quotationSubstitutePriority" column="quotationsubstitutepriority" not-null="true" type="int"/>
+        <property name="i_quotationSubstituteUpdateID" column="quotationsubstituteupdateid" not-null="true" type="int"/>
+        <property name="d_quotationSubstituteUpdateDate" column="quotationsubstituteupdatedate" not-null="true"
+                  type="timestamp"/>
+    </class>
+</hibernate-mapping>

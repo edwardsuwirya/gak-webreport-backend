@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.utility">
+    <class name="T_LogActivity" table="t_logactivity">
+        <meta attribute="class-description">
+            table system log transaction
+        </meta>
+        <composite-id>
+            <key-property name="d_tlaTransDate" column="tlatransdate" type="timestamp"/>
+            <key-property name="s_tlaDescription" column="tladescription" type="string" length="255"/>
+            <key-many-to-one name="user" column="tla_userid"
+                             class="com.ifm.domain.security.M_User"/>
+            <!--  <generator class="assigned"/> -->
+        </composite-id>
+        <many-to-one name="company" column="tla_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="project" column="tla_projectid"
+                     class="com.ifm.domain.security.M_Project" not-null="true"/>
+        <property name="s_tlaHostName" column="tlahostname" not-null="true" type="string" length="50"/>
+        <property name="s_tlaIPAddress" column="tlaipaddress" not-null="true" type="string" length="20"/>
+    </class>
+</hibernate-mapping>

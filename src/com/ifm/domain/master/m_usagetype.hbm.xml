@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_UsageType" table="m_usagetype">
+        <meta attribute="class-description">
+            table master tipe usage
+        </meta>
+        <id name="s_usageTypeCode" column="usagetypecode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="usagetype_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_usageTypeRealCode" column="usagetyperealcode" not-null="true" type="string" length="10"/>
+        <property name="s_usageTypeName" column="usagetypename" not-null="true" type="string" length="50"/>
+        <property name="i_usageTypeCreateID" column="usagetypecreateid" not-null="true" type="int"/>
+        <property name="d_usageTypeCreateDate" column="usagetypecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_usageTypeDeleteID" column="usagetypedeleteid" not-null="false" type="int"/>
+        <property name="d_usageTypeDeleteDate" column="usagetypedeletedate" not-null="false" type="timestamp"/>
+        <property name="i_usageTypeUpdateID" column="usagetypeupdateid" not-null="true" type="int"/>
+        <property name="d_usageTypeUpdateDate" column="usagetypeupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_usageTypeActive" column="usagetypeactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.security">
+    <class name="M_UserLevel" table="m_userlevel">
+        <meta attribute="class-description">
+            table master user level
+        </meta>
+        <id name="i_userLevelID" column="userlevelid" type="int">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="userlevel_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <set name="moduls" cascade="save-update" table="r_userlevel_modul">
+            <key column="rulm_userlevelid"/>
+            <many-to-many column="rulm_modulid" class="M_Modul"/>
+        </set>
+        <property name="s_userLevelName" column="userlevelname" not-null="true" type="string" length="30"/>
+        <property name="i_userLevelCreateID" column="userlevelcreateid" not-null="true" type="int"/>
+        <property name="d_userLevelCreateDate" column="userlevelcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_userLevelDeleteID" column="userleveldeleteid" not-null="false" type="int"/>
+        <property name="d_userLevelDeleteDate" column="userleveldeletedate" not-null="false" type="timestamp"/>
+        <property name="i_userLevelUpdateID" column="userlevelupdateid" not-null="true" type="int"/>
+        <property name="d_userLevelUpdateDate" column="userlevelupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_userLevelActive" column="userlevelactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

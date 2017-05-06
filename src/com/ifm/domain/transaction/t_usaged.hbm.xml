@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_UsageD" table="t_usaged">
+        <meta attribute="class-description">
+            table transaction usage d
+        </meta>
+        <id name="s_usageDNo" column="usagedno" type="string" length="60">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="article" column="usaged_articlecode"
+                     class="com.ifm.domain.master.M_Article" not-null="true"/>
+        <many-to-one name="uom" column="usaged_uomcode"
+                     class="com.ifm.domain.master.M_Uom" not-null="true"/>
+        <property name="i_usageDSequence" column="usagedsequence" not-null="true" type="int"/>
+        <property name="s_usageDSerialNo" column="usagedserialno" not-null="false" type="string" length="50"/>
+        <property name="d_usageDQty" column="usagedqty" not-null="true" type="big_decimal"/>
+        <property name="s_usageDDescription" column="usageddescription" not-null="false" type="string" length="200"/>
+        <property name="i_usageDUpdateID" column="usagedupdateid" not-null="true" type="int"/>
+        <property name="d_usageDUpdateDate" column="usagedupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.security">
+    <class name="M_Modul" table="m_modul">
+        <meta attribute="class-description">
+            table master modul
+        </meta>
+        <id name="i_modulID" column="modulid" type="int">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="project" column="modul_projectid"
+                     class="M_Project" not-null="true"/>
+        <property name="s_modulName" column="modulname" not-null="true" type="string" length="50"/>
+        <property name="s_modulName1" column="modulname1" not-null="false" type="string" length="100"/>
+        <property name="s_modulDesc" column="moduldesc" not-null="false" type="string" length="200"/>
+        <property name="i_modulLevel" column="modullevel" not-null="true" type="int"/>
+        <property name="i_modulOrder" column="modulorder" not-null="true" type="int"/>
+        <property name="i_modulParent" column="modulparent" not-null="false" type="int"/>
+        <property name="i_modulCreateID" column="modulcreateid" not-null="true" type="int"/>
+        <property name="d_modulCreateDate" column="modulcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_modulDeleteID" column="moduldeleteid" not-null="false" type="int"/>
+        <property name="d_modulDeleteDate" column="moduldeletedate" not-null="false" type="timestamp"/>
+        <property name="i_modulUpdateID" column="modulupdateid" not-null="true" type="int"/>
+        <property name="d_modulUpdateDate" column="modulupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_modulActive" column="modulactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

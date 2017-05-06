@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_ArticleClass" table="m_articleclass">
+        <meta attribute="class-description">
+            table master article class
+        </meta>
+        <id name="s_articleClassCode"
+            column="articleclasscode"
+            type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="articleclass_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="articleCategory" column="articleclass_articlecategorycode"
+                     class="M_ArticleCategory" not-null="true"/>
+
+        <property name="s_articleClassRealCode"
+                  column="articleclassrealcode" not-null="true"
+                  type="string" length="10"/>
+        <property name="s_articleClassName"
+                  column="articleclassname" not-null="true"
+                  type="string" length="50"/>
+        <property name="i_articleClassCreateID"
+                  column="articleclasscreateid" not-null="true"
+                  type="int"/>
+        <property name="d_articleClassCreateDate"
+                  column="articleclasscreatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="i_articleClassDeleteID"
+                  column="articleclassdeleteid" not-null="false"
+                  type="int"/>
+        <property name="d_articleClassDeleteDate"
+                  column="articleclassdeletedate" not-null="false"
+                  type="timestamp"/>
+        <property name="i_articleClassUpdateID"
+                  column="articleclassupdateid" not-null="true"
+                  type="int"/>
+        <property name="d_articleClassUpdateDate"
+                  column="articleclassupdatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="s_articleClassActive"
+                  column="articleclassactive" not-null="true"
+                  type="string" length="1"/>
+    </class>
+</hibernate-mapping>

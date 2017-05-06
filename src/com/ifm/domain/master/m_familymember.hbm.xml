@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_FamilyMember" table="m_familymember">
+        <meta attribute="class-description">
+            table master familymember
+        </meta>
+        <id name="i_familyMemberID" column="familymemberid" type="int">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="s_familyMemberName" column="familymembername" not-null="true" type="string" length="50"/>
+        <property name="i_familyMemberCreateID" column="familymembercreateid" not-null="true" type="int"/>
+        <property name="d_familyMemberCreateDate" column="familymembercreatedate" not-null="true" type="timestamp"/>
+        <property name="i_familyMemberDeleteID" column="familymemberdeleteid" not-null="false" type="int"/>
+        <property name="d_familyMemberDeleteDate" column="familymemberdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_familyMemberUpdateID" column="familymemberupdateid" not-null="true" type="int"/>
+        <property name="d_familyMemberUpdateDate" column="familymemberupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_familyMemberActive" column="familymemberactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

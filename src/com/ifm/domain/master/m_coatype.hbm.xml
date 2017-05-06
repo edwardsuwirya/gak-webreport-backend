@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_CoaType" table="m_coatype">
+        <meta attribute="class-description">
+            table master coa type
+        </meta>
+        <id name="s_coaTypeCode" column="coatypecode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="s_coaTypeName" column="coatypename" not-null="true" type="string" length="50"/>
+        <property name="i_coaTypeCreateID" column="coatypecreateid" not-null="true" type="int"/>
+        <property name="d_coaTypeCreateDate" column="coatypecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_coaTypeDeleteID" column="coatypedeleteid" not-null="false" type="int"/>
+        <property name="d_coaTypeDeleteDate" column="coatypedeletedate" not-null="false" type="timestamp"/>
+        <property name="i_coaTypeUpdateID" column="coatypeupdateid" not-null="true" type="int"/>
+        <property name="d_coaTypeUpdateDate" column="coatypeupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_coaTypeActive" column="coatypeactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

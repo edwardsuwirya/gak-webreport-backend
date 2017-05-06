@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_Transfer" table="t_transfer">
+        <meta attribute="class-description">
+            table transaction transfer
+        </meta>
+        <id name="s_transferNo" column="transferno" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="transfer_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="warehouse" column="transfer_warehousecode"
+                     class="com.ifm.domain.master.M_Warehouse" not-null="true"/>
+        <many-to-one name="warehouseref" column="transfer_warehouserefcode"
+                     class="com.ifm.domain.master.M_Warehouse" not-null="true"/>
+        <many-to-one name="sender" column="transfer_employeesendercode"
+                     class="com.ifm.domain.master.M_Employee" not-null="false"/>
+        <many-to-one name="receiver" column="transfer_employeereceivercode"
+                     class="com.ifm.domain.master.M_Employee" not-null="false"/>
+        <property name="s_transferRefNo" column="transfer_transferrefno" not-null="false" type="string" length="50"
+                  update="false" insert="false"/>
+        <many-to-one name="transferrefno" column="transfer_transferrefno"
+                     class="T_Transfer" not-null="false"/>
+        <property name="s_transferRealNo" column="transferrealno" not-null="true" type="string" length="40"/>
+        <property name="d_transferDate" column="transferdate" not-null="true" type="timestamp"/>
+        <property name="s_transferInOut" column="transferinout" not-null="true" type="string" length="1"/>
+        <property name="s_transferStatus" column="transferstatus" not-null="true" type="string" length="1"/>
+        <property name="i_transferPrinted" column="transferprinted" not-null="true" type="int"/>
+        <property name="s_transferNote1" column="transfernote1" not-null="false" type="string" length="100"/>
+        <property name="s_transferNote2" column="transfernote2" not-null="false" type="string" length="100"/>
+        <property name="s_transferNote3" column="transfernote3" not-null="false" type="string" length="100"/>
+        <property name="i_transferCreateID" column="transfercreateid" not-null="true" type="int"/>
+        <property name="d_transferCreateDate" column="transfercreatedate" not-null="true" type="timestamp"/>
+        <property name="i_transferApproveID" column="transferapproveid" not-null="false" type="int"/>
+        <property name="d_transferApproveDate" column="transferapprovedate" not-null="false" type="timestamp"/>
+        <property name="i_transferCancelID" column="transfercancelid" not-null="false" type="int"/>
+        <property name="d_transferCancelDate" column="transfercanceldate" not-null="false" type="timestamp"/>
+        <property name="s_transferCancelReason" column="transfercancelreason" not-null="false" type="string"
+                  length="200"/>
+        <property name="i_transferUpdateID" column="transferupdateid" not-null="true" type="int"/>
+        <property name="d_transferUpdateDate" column="transferupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_transferActive" column="transferactive" not-null="true" type="string" length="1"/>
+        <set name="transfers" table="t_transfer" lazy="false" cascade="all-delete-orphan"
+             inverse="false">
+            <key column="transfer_transferrefno"/>
+            <one-to-many class="T_Transfer"/>
+        </set>
+        <set name="details"
+             cascade="all">
+            <key column="transferd_transferno"/>
+            <one-to-many class="T_TransferD"/>
+        </set>
+    </class>
+</hibernate-mapping>

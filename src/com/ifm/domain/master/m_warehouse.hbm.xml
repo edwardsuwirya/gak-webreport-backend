@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Warehouse" table="m_warehouse">
+        <meta attribute="class-description">
+            table master warehouse
+        </meta>
+        <id name="s_warehouseCode" column="warehousecode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="warehouse_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="responsibilityCenter" column="warehouse_responsibilitycentercode"
+                     class="M_ResponsibilityCenter" not-null="true"/>
+        <many-to-one name="city" column="warehouse_citycode"
+                     class="M_City" not-null="true"/>
+        <set name="transactions" cascade="save-update" table="r_warehouse_transaction">
+            <key column="rwt_warehousecode"/>
+            <many-to-many column="rwt_transactioncode" class="M_Transaction"/>
+        </set>
+        <set name="warehouses" cascade="save-update" table="m_warehousenogit">
+            <key column="wng_warehousecodefrom"/>
+            <many-to-many column="wng_warehousecodeto" class="M_Warehouse"/>
+        </set>
+        <property name="s_warehouse_ZipCode" column="warehouse_zipcode" not-null="false" type="string" length="10"/>
+        <property name="s_warehouseRealCode" column="warehouserealcode" not-null="true" type="string" length="10"/>
+        <property name="s_warehouseName" column="warehousename" not-null="true" type="string" length="50"/>
+        <property name="s_warehouseAddress" column="warehouseaddress" not-null="true" type="string" length="100"/>
+        <property name="s_warehousePhone" column="warehousephone" not-null="false" type="string" length="50"/>
+        <property name="s_warehouseFax" column="warehousefax" not-null="false" type="string" length="50"/>
+        <property name="s_warehouseTaxCode" column="warehousetaxcode" not-null="false" type="string" length="50"/>
+        <property name="s_warehouseNpwp" column="warehousenpwp" not-null="false" type="string" length="50"/>
+        <property name="s_warehouseEmail" column="warehouseemail" not-null="false" type="string" length="50"/>
+        <property name="i_warehouseCreateID" column="warehousecreateid" not-null="true" type="int"/>
+        <property name="d_warehouseCreateDate" column="warehousecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_warehouseDeleteID" column="warehousedeleteid" not-null="false" type="int"/>
+        <property name="d_warehouseDeleteDate" column="warehousedeletedate" not-null="false" type="timestamp"/>
+        <property name="i_warehouseUpdateID" column="warehouseupdateid" not-null="true" type="int"/>
+        <property name="d_warehouseUpdateDate" column="warehouseupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_warehouseActive" column="warehouseactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

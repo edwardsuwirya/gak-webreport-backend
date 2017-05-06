@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_City" table="m_city">
+        <meta attribute="class-description">
+            table master city
+        </meta>
+        <id name="s_cityCode" column="citycode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="province" column="city_provincecode"
+                     class="M_Province" not-null="true"/>
+        <property name="s_cityName" column="cityname" not-null="true" type="string" length="50"/>
+        <property name="s_cityAreaCode" column="cityareacode" not-null="false" type="string" length="5"/>
+        <property name="i_cityCreateID" column="citycreateid" not-null="true" type="int"/>
+        <property name="d_cityCreateDate" column="citycreatedate" not-null="true" type="timestamp"/>
+        <property name="i_cityDeleteID" column="citydeleteid" not-null="false" type="int"/>
+        <property name="d_cityDeleteDate" column="citydeletedate" not-null="false" type="timestamp"/>
+        <property name="i_cityUpdateID" column="cityupdateid" not-null="true" type="int"/>
+        <property name="d_cityUpdateDate" column="cityupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_cityActive" column="cityactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

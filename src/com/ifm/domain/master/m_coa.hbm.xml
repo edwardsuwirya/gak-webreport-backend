@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Coa" table="m_coa">
+        <meta attribute="class-description">
+            table master coa
+        </meta>
+        <id name="s_coaCode" column="coacode" type="string" length="30">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="coa_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="coatype" column="coa_coatypecode"
+                     class="M_CoaType" not-null="true"/>
+        <many-to-one name="currency" column="coa_currencycode"
+                     class="M_Currency" not-null="true"/>
+
+        <property name="s_coaRealCode" column="coarealcode" not-null="true" type="string" length="20"/>
+        <property name="s_coaName" column="coaname" not-null="true" type="string" length="50"/>
+        <property name="s_coa_CoaParent" column="coa_coaparent" not-null="false" type="string" length="30"/>
+        <property name="i_coaLevel" column="coalevel" not-null="true" type="int"/>
+        <property name="s_coaEditable" column="coaeditable" not-null="true" type="string" length="1"/>
+        <property name="i_coaCreateID" column="coacreateid" not-null="true" type="int"/>
+        <property name="d_coaCreateDate" column="coacreatedate" not-null="true" type="timestamp"/>
+        <property name="i_coaDeleteID" column="coadeleteid" not-null="false" type="int"/>
+        <property name="d_coaDeleteDate" column="coadeletedate" not-null="false" type="timestamp"/>
+        <property name="i_coaUpdateID" column="coaupdateid" not-null="true" type="int"/>
+        <property name="d_coaUpdateDate" column="coaupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_coaActive" column="coaactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

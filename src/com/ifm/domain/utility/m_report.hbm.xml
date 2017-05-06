@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.utility">
+    <class name="M_Report" table="m_report">
+        <meta attribute="class-description">
+            table master report
+        </meta>
+        <id name="s_reportCode" column="reportcode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="report_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="project" column="report_projectid"
+                     class="com.ifm.domain.security.M_Project" not-null="true"/>
+        <property name="s_reportRealCode" column="reportrealcode" not-null="true" type="string" length="10"/>
+        <property name="s_reportName" column="reportname" not-null="true" type="string" length="50"/>
+        <property name="s_reportPath" column="reportpath" not-null="true" type="string" length="100"/>
+        <property name="i_reportCreateID" column="reportcreateid" not-null="true" type="int"/>
+        <property name="d_reportCreateDate" column="reportcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_reportDeleteID" column="reportdeleteid" not-null="false" type="int"/>
+        <property name="d_reportDeleteDate" column="reportdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_reportUpdateID" column="reportupdateid" not-null="true" type="int"/>
+        <property name="d_reportUpdateDate" column="reportupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_reportActive" column="reportactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

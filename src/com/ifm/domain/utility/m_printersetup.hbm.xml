@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.utility">
+    <class name="M_PrinterSetup" table="m_printersetup">
+        <meta attribute="class-description">
+            table set up printer
+        </meta>
+        <composite-id>
+            <key-property name="s_mpsHostName" column="mpshostname" type="string" length="50"/>
+            <key-many-to-one name="company" column="mps_companycode"
+                             class="com.ifm.domain.master.M_Company"/>
+            <key-property name="s_mpsItem" column="mpsitem" type="string" length="50"/>
+            <!--  <generator class="assigned"/> -->
+        </composite-id>
+        <many-to-one name="responsibilitycenter" column="mps_responsibilitycentercode"
+                     class="com.ifm.domain.master.M_ResponsibilityCenter" not-null="true"/>
+        <property name="s_mpsPrinter" column="mpsprinter" not-null="true" type="string" length="100"/>
+        <property name="i_mpsCreateID" column="mpscreateid" not-null="true" type="int"/>
+        <property name="d_mpsCreateDate" column="mpscreatedate" not-null="true" type="timestamp"/>
+        <property name="i_mpsDeleteID" column="mpsdeleteid" not-null="false" type="int"/>
+        <property name="d_mpsDeleteDate" column="mpsdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_mpsUpdateID" column="mpsupdateid" not-null="true" type="int"/>
+        <property name="d_mpsUpdateDate" column="mpsupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_mpsActive" column="mpsactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

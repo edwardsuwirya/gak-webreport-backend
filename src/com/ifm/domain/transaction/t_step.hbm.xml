@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_Step" table="t_step">
+        <meta attribute="class-description">
+            table transaction step (task's child)
+        </meta>
+        <id name="s_stepCode" column="stepcode" type="string" length="40">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="user" column="step_userid"
+                     class="com.ifm.domain.security.M_User" not-null="true"/>
+        <many-to-one name="currency" column="step_currencycode"
+                     class="com.ifm.domain.master.M_Currency" not-null="true"/>
+        <property name="i_stepSequence" column="stepsequence" not-null="true" type="int"/>
+        <property name="s_stepName" column="stepname" not-null="true" type="string" length="200"/>
+        <property name="d_stepCost" column="stepcost" not-null="true" type="big_decimal"/>
+        <property name="d_stepForeignExchange" column="stepforeignexchange" not-null="true" type="big_decimal"/>
+        <property name="d_stepStartDate" column="stepstartdate" not-null="true" type="date"/>
+        <property name="d_stepEndDate" column="stependdate" not-null="false" type="date"/>
+        <property name="s_stepStatus" column="stepstatus" not-null="true" type="string" length="1"/>
+        <property name="i_stepCreateID" column="stepcreateid" not-null="true" type="int"/>
+        <property name="d_stepCreateDate" column="stepcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_stepUpdateID" column="stepupdateid" not-null="true" type="int"/>
+        <property name="d_stepUpdateDate" column="stepupdatedate" not-null="true" type="timestamp"/>
+        <set name="files" cascade="save-update" table="r_step_file">
+            <key column="rsf_stepcode"/>
+            <many-to-many column="rsf_filecode" class="com.ifm.domain.master.M_File"/>
+        </set>
+        <set name="users" cascade="save-update" table="r_step_user">
+            <key column="rsu_stepcode"/>
+            <many-to-many column="rsu_userid" class="com.ifm.domain.security.M_User"/>
+        </set>
+    </class>
+</hibernate-mapping>

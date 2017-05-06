@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Educational" table="m_educational">
+        <meta attribute="class-description">
+            table master educational
+        </meta>
+        <id name="s_educationalCode" column="educationalcode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <property name="s_educationalName" column="educationalname" not-null="true" type="string" length="50"/>
+        <property name="i_educationalCreateID" column="educationalcreateid" not-null="true" type="int"/>
+        <property name="d_educationalCreateDate" column="educationalcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_educationalDeleteID" column="educationaldeleteid" not-null="false" type="int"/>
+        <property name="d_educationalDeleteDate" column="educationaldeletedate" not-null="false" type="timestamp"/>
+        <property name="i_educationalUpdateID" column="educationalupdateid" not-null="true" type="int"/>
+        <property name="d_educationalUpdateDate" column="educationalupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_educationalActive" column="educationalactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

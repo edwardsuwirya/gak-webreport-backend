@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_ArticleGroup" table="m_articlegroup">
+        <meta attribute="class-description">
+            table master article group
+        </meta>
+        <id name="s_articleGroupCode" column="articlegroupcode" type="string" length="80">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="articlegroup_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="coasales" column="articlegroup_coasales"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coapurchase" column="articlegroup_coapurchase"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coavatout" column="articlegroup_coavatout"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coavatin" column="articlegroup_coavatin"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coainventory" column="articlegroup_coainventory"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coacogs" column="articlegroup_coacogs"
+                     class="M_Coa" not-null="false"/>
+        <set name="transactions" cascade="save-update" table="r_articlegroup_transaction">
+            <key column="rat_articlegroupcode"/>
+            <many-to-many column="rat_transactioncode" class="M_Transaction"/>
+        </set>
+        <property name="s_articleGroupRealCode" column="articlegrouprealcode" not-null="true" type="string"
+                  length="70"/>
+        <property name="s_articleGroupName" column="articlegroupname" not-null="true" type="string" length="50"/>
+        <property name="s_articleGroupDisplayName" column="articlegroupdisplayname" not-null="true" type="string"
+                  length="20"/>
+        <property name="s_articleGroupOneBill" column="articlegrouponebill" not-null="false" type="string" length="1"/>
+        <property name="i_articleGroupCreateID" column="articlegroupcreateid" not-null="true" type="int"/>
+        <property name="d_articleGroupCreateDate" column="articlegroupcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_articleGroupDeleteID" column="articlegroupdeleteid" not-null="false" type="int"/>
+        <property name="d_articleGroupDeleteDate" column="articlegroupdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_articleGroupUpdateID" column="articlegroupupdateid" not-null="true" type="int"/>
+        <property name="d_articleGroupUpdateDate" column="articlegroupupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_articleGroupActive" column="articlegroupactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

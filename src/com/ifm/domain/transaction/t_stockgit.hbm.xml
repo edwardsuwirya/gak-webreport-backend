@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_StockGit" table="t_stockgit">
+        <meta attribute="class-description">
+            table stock goods in transit
+        </meta>
+        <composite-id>
+            <key-many-to-one name="company" column="tsg_companycode"
+                             class="com.ifm.domain.master.M_Company"/>
+            <key-many-to-one name="article" column="tsg_articlecode"
+                             class="com.ifm.domain.master.M_Article"/>
+            <key-many-to-one name="warehouse" column="tsg_warehousecode"
+                             class="com.ifm.domain.master.M_Warehouse"/>
+            <key-property name="s_tsgTransSerialNo" column="tsgtransserialno" type="string" length="50"/>
+        </composite-id>
+        <property name="d_tsgTransQty" column="tsgtransqty" not-null="true" type="big_decimal" scale="5"
+                  precision="19"/>
+        <many-to-one name="qtyuom" column="tsg_qtyuomcode"
+                     class="com.ifm.domain.master.M_Uom" not-null="true"/>
+    </class>
+</hibernate-mapping>

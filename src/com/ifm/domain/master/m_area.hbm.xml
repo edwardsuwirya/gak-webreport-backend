@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Area" table="m_area">
+        <meta attribute="class-description">
+            table master area
+        </meta>
+        <id name="s_areaCode" column="areacode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="area_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_areaRealCode" column="arearealcode" not-null="true" type="string" length="10"/>
+        <property name="s_areaName" column="areaname" not-null="true" type="string" length="50"/>
+        <property name="i_areaCreateID" column="areacreateid" not-null="true" type="int"/>
+        <property name="d_areaCreateDate" column="areacreatedate" not-null="true" type="timestamp"/>
+        <property name="i_areaDeleteID" column="areadeleteid" not-null="false" type="int"/>
+        <property name="d_areaDeleteDate" column="areadeletedate" not-null="false" type="timestamp"/>
+        <property name="i_areaUpdateID" column="areaupdateid" not-null="true" type="int"/>
+        <property name="d_areaUpdateDate" column="areaupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_areaActive" column="areaactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

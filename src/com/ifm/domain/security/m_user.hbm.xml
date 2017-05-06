@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.security">
+    <class name="M_User" table="m_user">
+        <meta attribute="class-description">
+            table master user
+        </meta>
+        <id name="i_userID" column="userid" type="int">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="userLevel" column="user_userlevelid"
+                     class="M_UserLevel" not-null="false"/>
+        <many-to-one name="country" column="user_countrycode"
+                     class="com.ifm.domain.master.M_Country" not-null="true"/>
+        <set name="companies" cascade="save-update" table="r_user_company">
+            <key column="ruc_userid"/>
+            <many-to-many column="ruc_companycode" class="com.ifm.domain.master.M_Company"/>
+        </set>
+        <set name="moduls" cascade="save-update" table="r_user_modul">
+            <key column="rum_userid"/>
+            <many-to-many column="rum_modulid" class="M_Modul"/>
+        </set>
+        <set name="rur" cascade="save-update" table="r_user_responsibilitycenter">
+            <key column="rur_userid"/>
+            <many-to-many column="rur_responsibilitycentercode" class="com.ifm.domain.master.M_ResponsibilityCenter"/>
+        </set>
+        <set name="rut" cascade="save-update" table="r_user_report">
+            <key column="rut_userid"/>
+            <many-to-many column="rut_reportcode" class="com.ifm.domain.utility.M_Report"/>
+        </set>
+        <property name="s_userName" column="username" not-null="true" type="string" length="30"/>
+        <property name="s_userPassword" column="userpassword" not-null="true" type="string" length="100"/>
+        <property name="s_userLocked" column="userlocked" not-null="true" type="string" length="1"/>
+        <property name="s_userGender" column="usergender" not-null="true" type="string" length="1"/>
+        <property name="d_userBirthDate" column="userbirthdate" not-null="true" type="date"/>
+        <property name="i_userCreateID" column="usercreateid" not-null="true" type="int"/>
+        <property name="d_userCreateDate" column="usercreatedate" not-null="true" type="timestamp"/>
+        <property name="i_userDeleteID" column="userdeleteid" not-null="false" type="int"/>
+        <property name="d_userDeleteDate" column="userdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_userUpdateID" column="userupdateid" not-null="true" type="int"/>
+        <property name="d_userUpdateDate" column="userupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_userActive" column="useractive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

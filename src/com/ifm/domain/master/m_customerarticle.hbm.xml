@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_CustomerArticle" table="m_customerarticle">
+        <meta attribute="class-description">
+            table master customer article
+        </meta>
+        <id name="s_customerArticleCode" column="customerarticlecode" type="string" length="140">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="article" column="customerarticle_articlecode"
+                     class="M_Article" not-null="true"/>
+        <property name="d_customerArticleFactor1" column="customerarticlefactor1" not-null="true" type="big_decimal"/>
+        <property name="s_customerArticleOperator1" column="customerarticleoperator1" not-null="true" type="string"
+                  length="1"/>
+        <property name="d_customerArticleFactor2" column="customerarticlefactor2" not-null="true" type="big_decimal"/>
+        <property name="s_customerArticleOperator2" column="customerarticleoperator2" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_customerArticleCreateID" column="customerarticlecreateid" not-null="true" type="int"/>
+        <property name="d_customerArticleCreateDate" column="customerarticlecreatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="i_customerArticleDeleteID" column="customerarticledeleteid" not-null="false" type="int"/>
+        <property name="d_customerArticleDeleteDate" column="customerarticledeletedate" not-null="false"
+                  type="timestamp"/>
+        <property name="i_customerArticleUpdateID" column="customerarticleupdateid" not-null="true" type="int"/>
+        <property name="d_customerArticleUpdateDate" column="customerarticleupdatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="s_customerArticleActive" column="customerarticleactive" not-null="true" type="string"
+                  length="1"/>
+    </class>
+</hibernate-mapping>

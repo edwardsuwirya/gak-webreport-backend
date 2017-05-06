@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_TransferD" table="t_transferd">
+        <meta attribute="class-description">
+            table transaction transfer d
+        </meta>
+        <id name="s_transferDNo" column="transferdno" type="string" length="60">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="article" column="transferd_articlecode"
+                     class="com.ifm.domain.master.M_Article" not-null="true"/>
+        <many-to-one name="uom" column="transferd_uomcode"
+                     class="com.ifm.domain.master.M_Uom" not-null="true"/>
+        <many-to-one name="room" column="transferd_roomcode"
+                     class="com.ifm.domain.master.M_Room" not-null="false"/>
+        <many-to-one name="rack" column="transferd_rackcode"
+                     class="com.ifm.domain.master.M_Rack" not-null="false"/>
+        <many-to-one name="racklevel" column="transferd_racklevelcode"
+                     class="com.ifm.domain.master.M_RackLevel" not-null="false"/>
+        <many-to-one name="racksection" column="transferd_racksectioncode"
+                     class="com.ifm.domain.master.M_RackSection" not-null="false"/>
+        <property name="i_transferDSequence" column="transferdsequence" not-null="true" type="int"/>
+        <property name="i_transferDRefSequence" column="transferdrefsequence" not-null="true" type="int"/>
+        <property name="s_transferDSerialNo" column="transferdserialno" not-null="false" type="string" length="50"/>
+        <property name="d_transferDQty" column="transferdqty" not-null="true" type="big_decimal"/>
+        <property name="d_transferDQtyReceive" column="transferdqtyreceive" not-null="true" type="big_decimal"/>
+        <property name="s_transferDDescription" column="transferddescription" not-null="false" type="string"
+                  length="200"/>
+        <property name="i_transferDUpdateID" column="transferdupdateid" not-null="true" type="int"/>
+        <property name="d_transferDUpdateDate" column="transferdupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

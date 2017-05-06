@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_ArticleSpecialSpecification" table="m_articlespecialspecification">
+        <meta attribute="class-description">
+            table master special specification
+        </meta>
+        <id name="s_articleSpecialSpecificationCode"
+            column="articlespecialspecificationcode"
+            type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="articlespecialspecification_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_articleSpecialSpecificationRealCode"
+                  column="articlespecialspecificationrealcode" not-null="true"
+                  type="string" length="10"/>
+        <property name="s_articleSpecialSpecificationName"
+                  column="articlespecialspecificationname" not-null="true"
+                  type="string" length="50"/>
+        <property name="i_articleSpecialSpecificationCreateID"
+                  column="articlespecialspecificationcreateid" not-null="true"
+                  type="int"/>
+        <property name="d_articleSpecialSpecificationCreateDate"
+                  column="articlespecialspecificationcreatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="i_articleSpecialSpecificationDeleteID"
+                  column="articlespecialspecificationdeleteid" not-null="false"
+                  type="int"/>
+        <property name="d_articleSpecialSpecificationDeleteDate"
+                  column="articlespecialspecificationdeletedate" not-null="false"
+                  type="timestamp"/>
+        <property name="i_articleSpecialSpecificationUpdateID"
+                  column="articlespecialspecificationupdateid" not-null="true"
+                  type="int"/>
+        <property name="d_articleSpecialSpecificationUpdateDate"
+                  column="articlespecialspecificationupdatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="s_articleSpecialSpecificationActive"
+                  column="articlespecialspecificationactive" not-null="true"
+                  type="string" length="1"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_SalesOrderD" table="t_salesorderd">
+        <meta attribute="class-description">
+            table transaction quotation d
+        </meta>
+        <id name="s_salesOrderDNo" column="salesorderdno" type="string" length="60">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="article" column="salesorderd_articlecode"
+                     class="com.ifm.domain.master.M_Article" not-null="true"/>
+        <many-to-one name="brand" column="salesorderd_brandcode"
+                     class="com.ifm.domain.master.M_Brand" not-null="false"/>
+        <many-to-one name="coating" column="salesorderd_coatingcode"
+                     class="com.ifm.domain.master.M_Coating" not-null="false"/>
+        <many-to-one name="uom" column="salesorderd_uomcode"
+                     class="com.ifm.domain.master.M_Uom" not-null="true"/>
+        <many-to-one name="discount1" column="salesorderd_discountcode1"
+                     class="com.ifm.domain.master.M_Discount" not-null="false"/>
+        <many-to-one name="discount2" column="salesorderd_discountcode2"
+                     class="com.ifm.domain.master.M_Discount" not-null="false"/>
+        <property name="i_salesOrderDSequence" column="salesorderdsequence" not-null="true" type="int"/>
+        <property name="d_salesOrderDQty" column="salesorderdqty" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDQtyDo" column="salesorderdqtydo" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDQtyInvoice" column="salesorderdqtyinvoice" not-null="false" type="big_decimal"/>
+        <property name="d_salesOrderDPrice" column="salesorderdprice" not-null="true" type="big_decimal"/>
+        <property name="s_salesOrderDOp1" column="salesorderdop1" not-null="true" type="string" length="1"/>
+        <property name="d_salesOrderDFactor1" column="salesorderdfactor1" not-null="true" type="big_decimal"/>
+        <property name="s_salesOrderDOp2" column="salesorderdop2" not-null="true" type="string" length="1"/>
+        <property name="d_salesOrderDFactor2" column="salesorderdfactor2" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDPriceAfterFactor" column="salesorderdpriceafterfactor" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_salesOrderDDiscountPct1" column="salesorderddiscountpct1" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDDiscountPrice1" column="salesorderddiscountprice1" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_salesOrderDDiscountPct2" column="salesorderddiscountpct2" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDDiscountPrice2" column="salesorderddiscountprice2" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_salesOrderDDiscountAmount" column="salesorderddiscountamount" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_salesOrderDChargePct" column="salesorderdchargepct" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDChargeAmount" column="salesorderdchargeamount" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDTaxPct" column="salesorderdtaxpct" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDTaxAmount" column="salesorderdtaxamount" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDPphPct" column="salesorderdpphpct" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDPphAmount" column="salesorderdpphamount" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDTotal" column="salesorderdtotal" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDLengthDefault" column="salesorderdlengthdefault" not-null="false"
+                  type="big_decimal"/>
+        <property name="s_salesOrderDDescription1" column="salesorderddescription1" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_salesOrderDDescription2" column="salesorderddescription2" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_salesOrderDQuotationNo" column="salesorderdquotationno" not-null="false" type="string"
+                  length="50"/>
+        <property name="s_salesOrderDQuotationDNo" column="salesorderdquotationdno" not-null="false" type="string"
+                  length="60"/>
+        <property name="i_salesOrderDPage" column="salesorderdpage" not-null="true" type="int"/>
+        <property name="i_salesOrderDUpdateID" column="salesorderdupdateid" not-null="true" type="int"/>
+        <property name="d_salesOrderDUpdateDate" column="salesorderdupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

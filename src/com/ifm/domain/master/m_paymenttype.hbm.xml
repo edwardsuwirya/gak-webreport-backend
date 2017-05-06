@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_PaymentType" table="m_paymenttype">
+        <meta attribute="class-description">
+            table master payment type
+        </meta>
+        <id name="s_paymentTypeCode" column="paymenttypecode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="paymenttype_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="coaar" column="paymenttype_coaar"
+                     class="M_Coa" not-null="false"/>
+        <property name="s_paymentTypeRealCode" column="paymenttyperealcode" not-null="true" type="string" length="10"/>
+        <property name="s_paymentTypeName" column="paymenttypename" not-null="true" type="string" length="50"/>
+        <property name="s_paymentTypeNeedCardType" column="paymenttypeneedcardtype" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_paymentTypeNeedCardNo" column="paymenttypeneedcardno" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_paymentTypeNeedCardBank" column="paymenttypeneedcardbank" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_paymentTypeNeedCardExp" column="paymenttypeneedcardexp" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_paymentTypeNeedCardCharge" column="paymenttypeneedcardcharge" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_paymentTypeNeedEdc" column="paymenttypeneededc" not-null="true" type="string" length="1"/>
+        <property name="s_paymentTypePointCalculation" column="paymenttypepointcalculation" not-null="false"
+                  type="string" length="1"/>
+        <property name="i_paymentTypeCreateID" column="paymenttypecreateid" not-null="true" type="int"/>
+        <property name="d_paymentTypeCreateDate" column="paymenttypecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_paymentTypeDeleteID" column="paymenttypedeleteid" not-null="false" type="int"/>
+        <property name="d_paymentTypeDeleteDate" column="paymenttypedeletedate" not-null="false" type="timestamp"/>
+        <property name="i_paymentTypeUpdateID" column="paymenttypeupdateid" not-null="true" type="int"/>
+        <property name="d_paymentTypeUpdateDate" column="paymenttypeupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_paymentTypeActive" column="paymenttypeactive" not-null="true" type="string" length="1"/>
+        <set name="coaars"
+             cascade="all">
+            <key column="paymenttypecoa_paymenttypecode"/>
+            <one-to-many class="M_PaymentTypeCoa"/>
+        </set>
+    </class>
+</hibernate-mapping>

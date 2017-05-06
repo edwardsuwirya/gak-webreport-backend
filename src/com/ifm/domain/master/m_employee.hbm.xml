@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Employee" table="m_employee">
+        <meta attribute="class-description">
+            table master employee
+        </meta>
+        <id name="s_employeeCode" column="employeecode" type="string" length="30">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="employee_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="religion" column="employee_religionid"
+                     class="M_Religion" not-null="false"/>
+        <many-to-one name="maritalstatus" column="employee_maritalstatuscode"
+                     class="M_MaritalStatus" not-null="false"/>
+        <many-to-one name="user" column="employee_userid"
+                     class="com.ifm.domain.security.M_User" not-null="false"/>
+        <property name="s_employeeRealCode" column="employeerealcode" not-null="true" type="string" length="20"/>
+        <property name="s_employeeName" column="employeename" not-null="true" type="string" length="50"/>
+        <property name="d_employeeBirthday" column="employeebirthday" not-null="true" type="date"/>
+        <property name="s_employeeBirthPlace" column="employeebirthplace" not-null="true" type="string" length="50"/>
+        <property name="s_employeeBloodType" column="employeebloodtype" not-null="false" type="string" length="2"/>
+        <property name="i_employeeHeight" column="employeeheight" not-null="false" type="int"/>
+        <property name="i_employeeWeight" column="employeeweight" not-null="false" type="int"/>
+        <property name="s_employeeGender" column="employeegender" not-null="true" type="string" length="1"/>
+        <property name="s_employeeCellPhoneNumber1" column="employeecellphonenumber1" not-null="false" type="string"
+                  length="20"/>
+        <property name="s_employeeCellPhoneNumber2" column="employeecellphonenumber2" not-null="false" type="string"
+                  length="20"/>
+        <property name="s_employeeCellPhoneNumber3" column="employeecellphonenumber3" not-null="false" type="string"
+                  length="20"/>
+        <property name="b_employeePictureFile" column="employeepicturefile" not-null="false" type="binary"
+                  length="1000000"/>
+        <property name="i_employeeCreateID" column="employeecreateid" not-null="true" type="int"/>
+        <property name="d_employeeCreateDate" column="employeecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_employeeDeleteID" column="employeedeleteid" not-null="false" type="int"/>
+        <property name="d_employeeDeleteDate" column="employeedeletedate" not-null="false" type="timestamp"/>
+        <property name="i_employeeUpdateID" column="employeeupdateid" not-null="true" type="int"/>
+        <property name="d_employeeUpdateDate" column="employeeupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_employeeActive" column="employeeactive" not-null="true" type="string" length="1"/>
+        <set name="addresses"
+             cascade="all">
+            <key column="employeeaddress_employeecode"/>
+            <one-to-many class="M_EmployeeAddress"/>
+        </set>
+        <set name="familymembers"
+             cascade="all">
+            <key column="employeefamilymember_employeecode"/>
+            <one-to-many class="M_EmployeeFamilyMember"/>
+        </set>
+        <set name="idcards"
+             cascade="all">
+            <key column="employeeidcard_employeecode"/>
+            <one-to-many class="M_EmployeeIDCard"/>
+        </set>
+        <set name="jobpositions"
+             cascade="all">
+            <key column="employeejobposition_employeecode"/>
+            <one-to-many class="M_EmployeeJobPosition"/>
+        </set>
+    </class>
+</hibernate-mapping>    

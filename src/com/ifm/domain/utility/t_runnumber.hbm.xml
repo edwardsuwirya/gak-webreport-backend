@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.utility">
+    <class name="T_RunNumber" table="t_runnumber">
+        <meta attribute="class-description">
+            table system log transaction
+        </meta>
+        <composite-id>
+            <key-many-to-one name="transaction" column="trn_transactioncode"
+                             class="com.ifm.domain.master.M_Transaction"/>
+            <key-many-to-one name="company" column="trn_companycode"
+                             class="com.ifm.domain.master.M_Company"/>
+            <key-property name="s_trnPrefix" column="trnprefix" type="string" length="50"/>
+            <!--  <generator class="assigned"/> -->
+        </composite-id>
+        <property name="i_trnLastNumber" column="trnlastnumber" not-null="true" type="int"/>
+        <property name="i_trnUpdateID" column="trnupdateid" not-null="true" type="int"/>
+        <property name="d_trnUpdateDate" column="trnupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

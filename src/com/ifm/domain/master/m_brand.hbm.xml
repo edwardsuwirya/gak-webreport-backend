@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Brand" table="m_brand">
+        <meta attribute="class-description">
+            table master brand
+        </meta>
+        <id name="s_brandCode" column="brandcode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="brand_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="country" column="brand_countrycode"
+                     class="M_Country" not-null="true"/>
+        <property name="s_brandRealCode" column="brandrealcode" not-null="true" type="string" length="10"/>
+        <property name="s_brandName" column="brandname" not-null="true" type="string" length="50"/>
+        <property name="i_brandCreateID" column="brandcreateid" not-null="true" type="int"/>
+        <property name="d_brandCreateDate" column="brandcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_brandDeleteID" column="branddeleteid" not-null="false" type="int"/>
+        <property name="d_brandDeleteDate" column="branddeletedate" not-null="false" type="timestamp"/>
+        <property name="i_brandUpdateID" column="brandupdateid" not-null="true" type="int"/>
+        <property name="d_brandUpdateDate" column="brandupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_brandActive" column="brandactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

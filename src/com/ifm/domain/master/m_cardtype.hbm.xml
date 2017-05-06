@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_CardType" table="m_cardtype">
+        <meta attribute="class-description">
+            table master card type
+        </meta>
+        <id name="s_cardTypeCode" column="cardtypecode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="cardtype_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_cardTypeRealCode" column="cardtyperealcode" not-null="true" type="string" length="10"/>
+        <property name="s_cardTypeName" column="cardtypename" not-null="true" type="string" length="50"/>
+        <property name="i_cardTypeCreateID" column="cardtypecreateid" not-null="true" type="int"/>
+        <property name="d_cardTypeCreateDate" column="cardtypecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_cardTypeDeleteID" column="cardtypedeleteid" not-null="false" type="int"/>
+        <property name="d_cardTypeDeleteDate" column="cardtypedeletedate" not-null="false" type="timestamp"/>
+        <property name="i_cardTypeUpdateID" column="cardtypeupdateid" not-null="true" type="int"/>
+        <property name="d_cardTypeUpdateDate" column="cardtypeupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_cardTypeActive" column="cardtypeactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

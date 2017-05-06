@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Bundling" table="m_bundling">
+        <meta attribute="class-description">
+            table master bundling
+        </meta>
+        <id name="s_bundlingCode" column="bundlingcode" type="string" length="130">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="bundling_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="article" column="bundling_articlecode"
+                     class="M_Article" not-null="true"/>
+        <many-to-one name="uom" column="bundling_uomcode"
+                     class="M_Uom" not-null="true"/>
+        <property name="s_bundlingRealCode" column="bundlingrealcode" not-null="true" type="string" length="120"/>
+        <property name="d_bundlingQty" column="bundlingqty" not-null="true" type="big_decimal"/>
+        <property name="d_bundlingDate" column="bundlingdate" not-null="true" type="date"/>
+        <property name="i_bundlingCreateID" column="bundlingcreateid" not-null="true" type="int"/>
+        <property name="d_bundlingCreateDate" column="bundlingcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_bundlingDeleteID" column="bundlingdeleteid" not-null="false" type="int"/>
+        <property name="d_bundlingDeleteDate" column="bundlingdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_bundlingUpdateID" column="bundlingupdateid" not-null="true" type="int"/>
+        <property name="d_bundlingUpdateDate" column="bundlingupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_bundlingActive" column="bundlingactive" not-null="true" type="string" length="1"/>
+        <set name="details"
+             cascade="all">
+            <key column="bundlingd_bundlingcode"/>
+            <one-to-many class="M_BundlingD"/>
+        </set>
+    </class>
+</hibernate-mapping>

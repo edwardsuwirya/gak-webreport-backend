@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <bean
+            class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+
+    <bean id="persistentManager" class="com.eter.gtw.dao.impl.PersistentManager"/>
+    <bean id="persistentManagerFactory" class="com.eter.gtw.dao.impl.PersistentManagerFactory"/>
+
+    <bean id="dbDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:/jdbc/5asecMssql"/>
+    </bean>
+
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dbDataSource"></property>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="databasePlatform" value="org.hibernate.dialect.SQLServerDialect"/>
+                <property name="showSql" value="false"/>
+            </bean>
+        </property>
+
+        <property name="mappingResources">
+            <list>
+                <value>com/ifm/domain/master/m_area.hbm.xml</value>
+                <value>com/ifm/domain/master/m_article.hbm.xml</value>
+                <value>com/ifm/domain/master/m_articlecategory.hbm.xml</value>
+                <value>com/ifm/domain/master/m_articleclass.hbm.xml</value>
+                <value>com/ifm/domain/master/m_articledepartment.hbm.xml</value>
+                <value>com/ifm/domain/master/m_articlegroup.hbm.xml</value>
+                <value>com/ifm/domain/master/m_articleresponsibilitycenterprice.hbm.xml</value>
+                <value>com/ifm/domain/master/m_articlespecialspecification.hbm.xml</value>
+                <value>com/ifm/domain/master/m_articleuom.hbm.xml</value>
+                <value>com/ifm/domain/master/m_articlezoneprice.hbm.xml</value>
+                <value>com/ifm/domain/master/m_bank.hbm.xml</value>
+                <value>com/ifm/domain/master/m_brand.hbm.xml</value>
+                <value>com/ifm/domain/master/m_bundling.hbm.xml</value>
+                <value>com/ifm/domain/master/m_bundlingd.hbm.xml</value>
+                <value>com/ifm/domain/master/m_cardtype.hbm.xml</value>
+                <value>com/ifm/domain/master/m_city.hbm.xml</value>
+                <value>com/ifm/domain/master/m_coa.hbm.xml</value>
+                <value>com/ifm/domain/master/m_coating.hbm.xml</value>
+                <value>com/ifm/domain/master/m_coatype.hbm.xml</value>
+                <value>com/ifm/domain/master/m_company.hbm.xml</value>
+                <value>com/ifm/domain/master/m_country.hbm.xml</value>
+                <value>com/ifm/domain/master/m_currency.hbm.xml</value>
+                <value>com/ifm/domain/master/m_customer.hbm.xml</value>
+                <value>com/ifm/domain/master/m_customeraddress.hbm.xml</value>
+                <value>com/ifm/domain/master/m_customerarticle.hbm.xml</value>
+                <value>com/ifm/domain/master/m_customercontact.hbm.xml</value>
+                <value>com/ifm/domain/master/m_customergroup.hbm.xml</value>
+                <value>com/ifm/domain/master/m_customergroupresponsibilitycentercoa.hbm.xml</value>
+                <value>com/ifm/domain/master/m_customeridcard.hbm.xml</value>
+                <value>com/ifm/domain/master/m_department.hbm.xml</value>
+                <value>com/ifm/domain/master/m_discount.hbm.xml</value>
+                <value>com/ifm/domain/master/m_division.hbm.xml</value>
+                <value>com/ifm/domain/master/m_edc.hbm.xml</value>
+                <value>com/ifm/domain/master/m_educational.hbm.xml</value>
+                <value>com/ifm/domain/master/m_employee.hbm.xml</value>
+                <value>com/ifm/domain/master/m_employeeaddress.hbm.xml</value>
+                <value>com/ifm/domain/master/m_employeefamilymember.hbm.xml</value>
+                <value>com/ifm/domain/master/m_employeeidcard.hbm.xml</value>
+                <value>com/ifm/domain/master/m_employeejobposition.hbm.xml</value>
+                <value>com/ifm/domain/master/m_familymember.hbm.xml</value>
+                <value>com/ifm/domain/master/m_file.hbm.xml</value>
+                <value>com/ifm/domain/master/m_idcard.hbm.xml</value>
+                <value>com/ifm/domain/master/m_jobposition.hbm.xml</value>
+                <value>com/ifm/domain/master/m_maritalstatus.hbm.xml</value>
+                <value>com/ifm/domain/master/m_memberreward.hbm.xml</value>
+                <value>com/ifm/domain/master/m_membertype.hbm.xml</value>
+                <value>com/ifm/domain/master/m_ownedstatus.hbm.xml</value>
+                <value>com/ifm/domain/master/m_paymenttype.hbm.xml</value>
+                <value>com/ifm/domain/master/m_paymenttypecoa.hbm.xml</value>
+                <value>com/ifm/domain/master/m_province.hbm.xml</value>
+                <value>com/ifm/domain/master/m_rack.hbm.xml</value>
+                <value>com/ifm/domain/master/m_racklevel.hbm.xml</value>
+                <value>com/ifm/domain/master/m_racksection.hbm.xml</value>
+                <value>com/ifm/domain/master/m_religion.hbm.xml</value>
+                <value>com/ifm/domain/master/m_remark.hbm.xml</value>
+                <value>com/ifm/domain/master/m_responsibilitycenter.hbm.xml</value>
+                <value>com/ifm/domain/master/m_room.hbm.xml</value>
+                <value>com/ifm/domain/master/m_section.hbm.xml</value>
+                <value>com/ifm/domain/master/m_transaction.hbm.xml</value>
+                <value>com/ifm/domain/master/m_uom.hbm.xml</value>
+                <value>com/ifm/domain/master/m_usagetype.hbm.xml</value>
+                <value>com/ifm/domain/master/m_voucher.hbm.xml</value>
+                <value>com/ifm/domain/master/m_warehouse.hbm.xml</value>
+                <value>com/ifm/domain/master/m_zipcode.hbm.xml</value>
+                <value>com/ifm/domain/master/m_zone.hbm.xml</value>
+                <value>com/ifm/domain/security/m_modul.hbm.xml</value>
+                <value>com/ifm/domain/security/m_project.hbm.xml</value>
+                <value>com/ifm/domain/security/m_user.hbm.xml</value>
+                <value>com/ifm/domain/security/m_userlevel.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_deliveryorder.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_deliveryorderd.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_membershippointhistory.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_quotation.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_quotationd.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_quotationsubstitute.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_receiveorder.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_receiveorderd.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_receiveorderpayment.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_salesinvoice.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_salesinvoiced.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_salesinvoicepayment.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_salesorder.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_salesorderd.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_step.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_stockcard.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_stockgit.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_stockreal.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_task.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_transfer.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_transferd.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_usage.hbm.xml</value>
+                <value>com/ifm/domain/transaction/t_usaged.hbm.xml</value>
+                <value>com/ifm/domain/utility/m_currentdate.hbm.xml</value>
+                <value>com/ifm/domain/utility/m_inventorycounter.hbm.xml</value>
+                <value>com/ifm/domain/utility/m_membershipcounter.hbm.xml</value>
+                <value>com/ifm/domain/utility/m_printersetup.hbm.xml</value>
+                <value>com/ifm/domain/utility/m_registry.hbm.xml</value>
+                <value>com/ifm/domain/utility/m_report.hbm.xml</value>
+                <value>com/ifm/domain/utility/m_salescounter.hbm.xml</value>
+                <value>com/ifm/domain/utility/t_exportservertoclient.hbm.xml</value>
+                <value>com/ifm/domain/utility/t_importserverfromclient.hbm.xml</value>
+                <value>com/ifm/domain/utility/t_logactivity.hbm.xml</value>
+                <value>com/ifm/domain/utility/t_logtransaction.hbm.xml</value>
+                <value>com/ifm/domain/utility/t_runnumber.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

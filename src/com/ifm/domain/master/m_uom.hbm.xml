@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Uom" table="m_uom">
+        <meta attribute="class-description">
+            table master satuan (unit of measurement)
+        </meta>
+        <id name="s_uomCode" column="uomcode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <property name="s_uomName" column="uomname" not-null="true" type="string" length="50"/>
+        <property name="i_uomCreateID" column="uomcreateid" not-null="true" type="int"/>
+        <property name="d_uomCreateDate" column="uomcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_uomDeleteID" column="uomdeleteid" not-null="false" type="int"/>
+        <property name="d_uomDeleteDate" column="uomdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_uomUpdateID" column="uomupdateid" not-null="true" type="int"/>
+        <property name="d_uomUpdateDate" column="uomupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_uomActive" column="uomactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_OwnedStatus" table="m_ownedstatus">
+        <meta attribute="class-description">
+            table master owned status
+        </meta>
+        <id name="i_ownedStatusID" column="ownedstatusid" type="int">
+            <generator class="assigned"/>
+        </id>
+        <property name="s_ownedStatusName" column="ownedstatusname" not-null="true" type="string" length="50"/>
+        <property name="i_ownedStatusCreateID" column="ownedstatuscreateid" not-null="true" type="int"/>
+        <property name="d_ownedStatusCreateDate" column="ownedstatuscreatedate" not-null="true" type="timestamp"/>
+        <property name="i_ownedStatusDeleteID" column="ownedstatusdeleteid" not-null="false" type="int"/>
+        <property name="d_ownedStatusDeleteDate" column="ownedstatusdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_ownedStatusUpdateID" column="ownedstatusupdateid" not-null="true" type="int"/>
+        <property name="d_ownedStatusUpdateDate" column="ownedstatusupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_ownedStatusActive" column="ownedstatusactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

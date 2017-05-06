@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.utility">
+    <class name="T_LogTransaction" table="t_logtransaction">
+        <meta attribute="class-description">
+            table system log transaction
+        </meta>
+        <composite-id>
+            <key-property name="s_tltTransNo" column="tlttransno" type="string" length="50"/>
+            <key-many-to-one name="transaction" column="tlt_transactioncode"
+                             class="com.ifm.domain.master.M_Transaction"/>
+            <key-many-to-one name="user" column="tlt_userid"
+                             class="com.ifm.domain.security.M_User"/>
+            <!--  <generator class="assigned"/> -->
+        </composite-id>
+        <many-to-one name="company" column="tlt_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+    </class>
+</hibernate-mapping>

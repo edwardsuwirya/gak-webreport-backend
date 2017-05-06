@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_DeliveryOrder" table="t_deliveryorder">
+        <meta attribute="class-description">
+            table transaction receive order
+        </meta>
+        <id name="s_deliveryOrderNo" column="deliveryorderno" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="deliveryorder_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="customer" column="deliveryorder_customercode"
+                     class="com.ifm.domain.master.M_Customer" not-null="true"/>
+        <many-to-one name="warehouse" column="deliveryorder_warehousecode"
+                     class="com.ifm.domain.master.M_Warehouse" not-null="true"/>
+        <many-to-one name="receiveorder" column="deliveryorder_receiveorderno"
+                     class="T_ReceiveOrder" not-null="false"/>
+        <many-to-one name="salesorder" column="deliveryorder_salesorderno"
+                     class="T_SalesOrder" not-null="false"/>
+        <many-to-one name="driver" column="deliveryorder_employeecode"
+                     class="com.ifm.domain.master.M_Employee" not-null="false"/>
+        <property name="s_deliveryOrderRealNo" column="deliveryorderrealno" not-null="true" type="string" length="40"/>
+        <property name="d_deliveryOrderDate" column="deliveryorderdate" not-null="true" type="timestamp"/>
+        <property name="s_deliveryOrderAddress" column="deliveryorderaddress" not-null="false" type="string"
+                  length="500"/>
+        <property name="s_deliveryOrderSpecialInstruction" column="deliveryorderspecialinstruction" not-null="false"
+                  type="string" length="100"/>
+        <property name="s_deliveryOrderReceiver" column="deliveryorderreceiver" not-null="false" type="string"
+                  length="50"/>
+        <property name="s_deliveryOrderStatus" column="deliveryorderstatus" not-null="true" type="string" length="1"/>
+        <property name="i_deliveryOrderPrinted" column="deliveryorderprinted" not-null="true" type="int"/>
+        <property name="s_deliveryOrderNote1" column="deliveryordernote1" not-null="false" type="string" length="100"/>
+        <property name="s_deliveryOrderNote2" column="deliveryordernote2" not-null="false" type="string" length="100"/>
+        <property name="s_deliveryOrderNote3" column="deliveryordernote3" not-null="false" type="string" length="100"/>
+        <property name="i_deliveryOrderCreateID" column="deliveryordercreateid" not-null="true" type="int"/>
+        <property name="d_deliveryOrderCreateDate" column="deliveryordercreatedate" not-null="true" type="timestamp"/>
+        <property name="i_deliveryOrderApproveID" column="deliveryorderapproveid" not-null="false" type="int"/>
+        <property name="d_deliveryOrderApproveDate" column="deliveryorderapprovedate" not-null="false"
+                  type="timestamp"/>
+        <property name="i_deliveryOrderCancelID" column="deliveryordercancelid" not-null="false" type="int"/>
+        <property name="d_deliveryOrderCancelDate" column="deliveryordercanceldate" not-null="false" type="timestamp"/>
+        <property name="s_deliveryOrderCancelReason" column="deliveryordercancelreason" not-null="false" type="string"
+                  length="200"/>
+        <property name="i_deliveryOrderUpdateID" column="deliveryorderupdateid" not-null="true" type="int"/>
+        <property name="d_deliveryOrderUpdateDate" column="deliveryorderupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_deliveryOrderActive" column="deliveryorderactive" not-null="true" type="string" length="1"/>
+        <set name="details"
+             cascade="all">
+            <key column="deliveryorderd_deliveryorderno"/>
+            <one-to-many class="T_DeliveryOrderD"/>
+        </set>
+    </class>
+</hibernate-mapping>

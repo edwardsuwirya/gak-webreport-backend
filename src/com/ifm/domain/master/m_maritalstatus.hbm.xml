@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_MaritalStatus" table="m_maritalstatus">
+        <meta attribute="class-description">
+            table master marital status
+        </meta>
+        <id name="s_maritalStatusCode" column="maritalstatuscode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <property name="s_maritalStatusName" column="maritalstatusname" not-null="true" type="string" length="50"/>
+        <property name="i_maritalStatusCreateID" column="maritalstatuscreateid" not-null="true" type="int"/>
+        <property name="d_maritalStatusCreateDate" column="maritalstatuscreatedate" not-null="true" type="timestamp"/>
+        <property name="i_maritalStatusDeleteID" column="maritalstatusdeleteid" not-null="false" type="int"/>
+        <property name="d_maritalStatusDeleteDate" column="maritalstatusdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_maritalStatusUpdateID" column="maritalstatusupdateid" not-null="true" type="int"/>
+        <property name="d_maritalStatusUpdateDate" column="maritalstatusupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_maritalStatusActive" column="maritalstatusactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_SalesInvoiceD" table="t_salesinvoiced">
+        <meta attribute="class-description">
+            table transaction sales invoice d
+        </meta>
+        <id name="s_salesInvoiceDNo" column="salesinvoicedno" type="string" length="60">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="article" column="salesinvoiced_articlecode"
+                     class="com.ifm.domain.master.M_Article" not-null="true"/>
+        <many-to-one name="uom" column="salesinvoiced_uomcode"
+                     class="com.ifm.domain.master.M_Uom" not-null="true"/>
+        <property name="i_salesInvoiceDSequence" column="salesinvoicedsequence" not-null="true" type="int"/>
+        <property name="i_salesInvoiceDRefSequence" column="salesinvoicedrefsequence" not-null="false" type="int"/>
+        <property name="s_salesinvoiceDSerialNo" column="salesinvoicedserialno" not-null="false" type="string"
+                  length="50"/>
+        <property name="d_salesInvoiceDQty" column="salesinvoicedqty" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceDQtyRetur" column="salesinvoicedqtyretur" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceDQtyTax" column="salesinvoicedqtytax" not-null="false" type="big_decimal"/>
+        <property name="d_salesInvoiceDSubTotal" column="salesinvoicedsubtotal" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceDDiscount" column="salesinvoiceddiscount" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceDVoucher" column="salesinvoicedvoucher" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceDTax" column="salesinvoicedtax" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceDPph" column="salesinvoicedpph" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceDServiceCharge" column="salesinvoicedservicecharge" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_salesInvoiceDBonus" column="salesinvoicedbonus" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceDGrandTotal" column="salesinvoicedgrandtotal" not-null="true" type="big_decimal"/>
+        <property name="d_salesInvoiceDLengthDefault" column="salesinvoicedlengthdefault" not-null="false"
+                  type="big_decimal"/>
+        <property name="s_salesinvoiceDTaxNo" column="salesinvoicedtaxno" not-null="false" type="string" length="50"/>
+        <property name="i_salesInvoiceDUpdateID" column="salesinvoicedupdateid" not-null="true" type="int"/>
+        <property name="d_salesInvoiceDUpdateDate" column="salesinvoicedupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

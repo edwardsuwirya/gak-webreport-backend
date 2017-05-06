@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_ZipCode" table="m_zipcode">
+        <meta attribute="class-description">
+            table master zipcode
+        </meta>
+        <id name="s_zipCodeCode" column="zipcodecode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="city" column="zipcode_citycode"
+                     class="M_City" not-null="true"/>
+        <property name="s_zipCodeDistrict" column="zipcodedistrict" not-null="false" type="string" length="50"/>
+        <property name="s_zipCodeSubDistrict" column="zipcodesubdistrict" not-null="false" type="string" length="50"/>
+        <property name="i_zipCodeCreateID" column="zipcodecreateid" not-null="true" type="int"/>
+        <property name="d_zipCodeCreateDate" column="zipcodecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_zipCodeDeleteID" column="zipcodedeleteid" not-null="false" type="int"/>
+        <property name="d_zipCodeDeleteDate" column="zipcodedeletedate" not-null="false" type="timestamp"/>
+        <property name="i_zipCodeUpdateID" column="zipcodeupdateid" not-null="true" type="int"/>
+        <property name="d_zipCodeUpdateDate" column="zipcodeupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_zipCodeActive" column="zipcodeactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

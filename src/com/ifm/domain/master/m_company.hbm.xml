@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Company" table="m_company">
+        <meta attribute="class-description">
+            table master company
+        </meta>
+        <id name="s_companyCode" column="companycode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="currency" column="company_currencycode"
+                     class="M_Currency" not-null="true"/>
+        <many-to-one name="responsibilitycenter" column="company_responsibilitycentercode"
+                     class="M_ResponsibilityCenter" not-null="false"/>
+        <many-to-one name="cashpaymenttype" column="company_cashpaymenttypecode"
+                     class="M_PaymentType" not-null="false"/>
+        <many-to-one name="voucherpaymenttype" column="company_voucherpaymenttypecode"
+                     class="M_PaymentType" not-null="false"/>
+        <property name="s_companyName" column="companyname" not-null="true" type="string" length="50"
+                  index="m_company_index1"/>
+        <property name="s_companyNPWP" column="companynpwp" not-null="false" type="string" length="100"/>
+        <property name="s_companySIUP" column="companysiup" not-null="false" type="string" length="100"/>
+        <property name="s_companyTDP" column="companytdp" not-null="false" type="string" length="100"/>
+        <property name="s_companyPKP" column="companypkp" not-null="false" type="string" length="100"/>
+        <property name="i_companyCreateID" column="companycreateid" not-null="true" type="int"/>
+        <property name="d_companyCreateDate" column="companycreatedate" not-null="true" type="timestamp"/>
+        <property name="i_companyDeleteID" column="companydeleteid" not-null="false" type="int"/>
+        <property name="d_companyDeleteDate" column="companydeletedate" not-null="false" type="timestamp"/>
+        <property name="i_companyUpdateID" column="companyupdateid" not-null="true" type="int"/>
+        <property name="d_companyUpdateDate" column="companyupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_companyActive" column="companyactive" not-null="true" type="string" length="1"/>
+        <set name="projects" cascade="save-update" table="r_company_project">
+            <key column="rcp_companycode"/>
+            <many-to-many column="rcp_projectid" class="com.ifm.domain.security.M_Project"/>
+        </set>
+        <!--
+        <many-to-one name="salescounter" column="company_salescountercode"
+            unique="true"
+             class="com.ifm.domain.utility.M_SalesCounter" not-null="false"/>
+         -->
+    </class>
+</hibernate-mapping>

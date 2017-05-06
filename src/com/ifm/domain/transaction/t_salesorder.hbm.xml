@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_SalesOrder" table="t_salesorder">
+        <meta attribute="class-description">
+            table transaction sales order
+        </meta>
+        <id name="s_salesOrderNo" column="salesorderno" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="salesorder_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="responsibilitycenter" column="salesorder_responsibilitycentercode"
+                     class="com.ifm.domain.master.M_ResponsibilityCenter" not-null="true"/>
+        <many-to-one name="currency" column="salesorder_currencycode"
+                     class="com.ifm.domain.master.M_Currency" not-null="true"/>
+        <many-to-one name="customer" column="salesorder_customercode"
+                     class="com.ifm.domain.master.M_Customer" not-null="true"/>
+        <many-to-one name="employee" column="salesorder_employeecode"
+                     class="com.ifm.domain.master.M_Employee" not-null="false"/>
+        <many-to-one name="division" column="salesorder_divisioncode"
+                     class="com.ifm.domain.master.M_Division" not-null="false"/>
+        <many-to-one name="quotation" column="salesorder_quotationno"
+                     class="T_Quotation" not-null="false"/>
+        <property name="s_salesOrderRealNo" column="salesorderrealno" not-null="true" type="string" length="40"/>
+        <property name="s_salesOrderPoCustomerNo" column="salesorderpocustomerno" not-null="false" type="string"
+                  length="50"/>
+        <property name="d_salesOrderDate" column="salesorderdate" not-null="true" type="timestamp"/>
+        <property name="s_salesOrderAddress" column="salesorderaddress" not-null="false" type="string" length="200"/>
+        <property name="s_salesOrderPhone" column="salesorderphone" not-null="false" type="string" length="50"/>
+        <property name="s_salesOrderFax" column="salesorderfax" not-null="false" type="string" length="50"/>
+        <property name="s_salesOrderAttn" column="salesorderattn" not-null="false" type="string" length="100"/>
+        <property name="d_salesOrderExRate" column="salesorderexrate" not-null="true" type="big_decimal"/>
+        <property name="s_salesOrderDescription" column="salesorderdescription" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_salesOrderBanner1" column="salesorderbanner1" not-null="false" type="string" length="100"/>
+        <property name="s_salesOrderBanner2" column="salesorderbanner2" not-null="false" type="string" length="100"/>
+        <property name="s_salesOrderNote1" column="salesordernote1" not-null="false" type="string" length="100"/>
+        <property name="s_salesOrderNote2" column="salesordernote2" not-null="false" type="string" length="100"/>
+        <property name="s_salesOrderNote3" column="salesordernote3" not-null="false" type="string" length="100"/>
+        <property name="i_salesOrderToc" column="salesordertoc" not-null="true" type="int"/>
+        <property name="d_salesOrderSubTotal" column="salesordersubtotal" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderDiscount" column="salesorderdiscount" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderCharge" column="salesordercharge" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderTax" column="salesordertax" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderPph" column="salesorderpph" not-null="true" type="big_decimal"/>
+        <property name="d_salesOrderGrandTotal" column="salesordergrandtotal" not-null="true" type="big_decimal"/>
+        <property name="s_salesOrderStatus" column="salesorderstatus" not-null="true" type="string" length="1"/>
+        <property name="i_salesOrderPrinted" column="salesorderprinted" not-null="true" type="int"/>
+        <property name="i_salesOrderCreateID" column="salesordercreateid" not-null="true" type="int"/>
+        <property name="d_salesOrderCreateDate" column="salesordercreatedate" not-null="true" type="timestamp"/>
+        <property name="i_salesOrderApproveID" column="salesorderapproveid" not-null="false" type="int"/>
+        <property name="d_salesOrderApproveDate" column="salesorderapprovedate" not-null="false" type="timestamp"/>
+        <property name="i_salesOrderCancelID" column="salesordercancelid" not-null="false" type="int"/>
+        <property name="d_salesOrderCancelDate" column="salesordercanceldate" not-null="false" type="timestamp"/>
+        <property name="s_salesOrderCancelReason" column="salesordercancelreason" not-null="false" type="string"
+                  length="200"/>
+        <property name="i_salesOrderUpdateID" column="salesorderupdateid" not-null="true" type="int"/>
+        <property name="d_salesOrderUpdateDate" column="salesorderupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_salesOrderActive" column="salesorderactive" not-null="true" type="string" length="1"/>
+        <set name="details"
+             cascade="all">
+            <key column="salesorderd_salesorderno"/>
+            <one-to-many class="T_SalesOrderD"/>
+        </set>
+    </class>
+</hibernate-mapping>

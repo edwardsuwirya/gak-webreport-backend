@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_ReceiveOrder" table="t_receiveorder">
+        <meta attribute="class-description">
+            table transaction receive order
+        </meta>
+        <id name="s_receiveOrderNo" column="receiveorderno" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="receiveorder_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="responsibilitycenter" column="receiveorder_responsibilitycentercode"
+                     class="com.ifm.domain.master.M_ResponsibilityCenter" not-null="true"/>
+        <many-to-one name="currency" column="receiveorder_currencycode"
+                     class="com.ifm.domain.master.M_Currency" not-null="true"/>
+        <many-to-one name="customer" column="receiveorder_customercode"
+                     class="com.ifm.domain.master.M_Customer" not-null="true"/>
+        <many-to-one name="warehouse" column="receiveorder_warehousecode"
+                     class="com.ifm.domain.master.M_Warehouse" not-null="true"/>
+        <property name="s_receiveOrderRealNo" column="receiveorderrealno" not-null="true" type="string" length="40"/>
+        <property name="d_receiveOrderDate" column="receiveorderdate" not-null="true" type="timestamp"/>
+        <property name="d_receiveOrderExRate" column="receiveorderexrate" not-null="true" type="big_decimal"/>
+        <property name="s_receiveOrderAddress" column="receiveorderaddress" not-null="false" type="string"
+                  length="500"/>
+        <property name="s_receiveOrderSpecialInstruction" column="receiveorderspecialinstruction" not-null="false"
+                  type="string" length="100"/>
+        <property name="d_receiveOrderSubTotal" column="receiveordersubtotal" not-null="true" type="big_decimal"/>
+        <property name="d_receiveOrderDiscount" column="receiveorderdiscount" not-null="true" type="big_decimal"/>
+        <property name="d_receiveOrderVoucher" column="receiveordervoucher" not-null="true" type="big_decimal"/>
+        <property name="d_receiveOrderTax" column="receiveordertax" not-null="true" type="big_decimal"/>
+        <property name="d_receiveOrderPph" column="receiveorderpph" not-null="true" type="big_decimal"/>
+        <property name="d_receiveOrderServiceCharge" column="receiveorderservicecharge" not-null="true"
+                  type="big_decimal"/>
+        <property name="d_receiveOrderBonus" column="receiveorderbonus" not-null="true" type="big_decimal"/>
+        <property name="d_receiveOrderGrandTotal" column="receiveordergrandtotal" not-null="true" type="big_decimal"/>
+        <property name="s_receiveOrderStatus" column="receiveorderstatus" not-null="true" type="string" length="1"/>
+        <property name="i_receiveOrderPrinted" column="receiveorderprinted" not-null="true" type="int"/>
+        <property name="s_receiveOrderNote1" column="receiveordernote1" not-null="false" type="string" length="100"/>
+        <property name="s_receiveOrderNote2" column="receiveordernote2" not-null="false" type="string" length="100"/>
+        <property name="s_receiveOrderNote3" column="receiveordernote3" not-null="false" type="string" length="100"/>
+        <property name="i_receiveOrderCreateID" column="receiveordercreateid" not-null="true" type="int"/>
+        <property name="d_receiveOrderCreateDate" column="receiveordercreatedate" not-null="true" type="timestamp"/>
+        <property name="i_receiveOrderApproveID" column="receiveorderapproveid" not-null="false" type="int"/>
+        <property name="d_receiveOrderApproveDate" column="receiveorderapprovedate" not-null="false" type="timestamp"/>
+        <property name="i_receiveOrderCancelID" column="receiveordercancelid" not-null="false" type="int"/>
+        <property name="d_receiveOrderCancelDate" column="receiveordercanceldate" not-null="false" type="timestamp"/>
+        <property name="s_receiveOrderCancelReason" column="receiveordercancelreason" not-null="false" type="string"
+                  length="200"/>
+        <property name="i_receiveOrderUpdateID" column="receiveorderupdateid" not-null="true" type="int"/>
+        <property name="d_receiveOrderUpdateDate" column="receiveorderupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_receiveOrderActive" column="receiveorderactive" not-null="true" type="string" length="1"/>
+        <set name="details"
+             cascade="all">
+            <key column="receiveorderd_receiveorderno"/>
+            <one-to-many class="T_ReceiveOrderD"/>
+        </set>
+        <set name="payments"
+             cascade="all">
+            <key column="receiveorderpayment_receiveorderno"/>
+            <one-to-many class="T_ReceiveOrderPayment"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_MembershipPointHistory" table="t_membershippointhistory">
+        <meta attribute="class-description">
+            table membership point history
+        </meta>
+        <composite-id>
+            <key-property name="s_tmpTransNo" column="tmptransno" type="string" length="50"/>
+            <key-many-to-one name="company" column="tmp_companycode"
+                             class="com.ifm.domain.master.M_Company"/>
+            <key-many-to-one name="transaction" column="tmp_transactioncode"
+                             class="com.ifm.domain.master.M_Transaction"/>
+            <key-many-to-one name="member" column="tmp_membercode"
+                             class="com.ifm.domain.master.M_Customer"/>
+            <key-property name="i_tmpItemSequence" column="tmptransitemsequence" type="int"/>
+            <key-property name="s_tmpItemCode" column="tmpitemcode" type="string" length="50"/>
+        </composite-id>
+        <property name="s_tmpTransRealNo" column="tmptransrealno" not-null="true" type="string" length="40"/>
+        <property name="s_tmpItemRealCode" column="tmpitemrealcode" not-null="true" type="string" length="40"/>
+        <property name="s_tmpItemName" column="tmpitemname" not-null="true" type="string" length="100"/>
+        <property name="i_tmpPoint" column="tmppoint" not-null="true" type="int"/>
+        <property name="i_tmpTransCreateID" column="tmptranscreateid" not-null="true" type="int"/>
+        <property name="d_tmpTransCreateDate" column="tmptranscreatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

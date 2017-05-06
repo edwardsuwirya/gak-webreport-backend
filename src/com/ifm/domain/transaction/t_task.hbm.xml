@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_Task" table="t_task">
+        <meta attribute="class-description">
+            table transaction task
+        </meta>
+        <id name="s_taskCode" column="taskcode" type="string" length="30">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="task_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="user" column="task_userid"
+                     class="com.ifm.domain.security.M_User" not-null="true"/>
+        <many-to-one name="currency" column="task_currencycode"
+                     class="com.ifm.domain.master.M_Currency" not-null="true"/>
+        <many-to-one name="responsibilitycenter" column="task_responsibilitycentercode"
+                     class="com.ifm.domain.master.M_ResponsibilityCenter" not-null="true"/>
+        <property name="s_taskRealCode" column="taskrealcode" not-null="true" type="string" length="20"/>
+        <property name="s_taskName" column="taskname" not-null="true" type="string" length="200"/>
+        <property name="d_taskEstimateStartDate" column="taskestimatestartdate" not-null="true" type="date"/>
+        <property name="d_taskEstimateEndDate" column="taskestimateenddate" not-null="true" type="date"/>
+        <property name="d_taskEstimateBudget" column="taskestimatebudget" not-null="true" type="big_decimal"/>
+        <property name="d_taskStartDate" column="taskstartdate" not-null="false" type="date"/>
+        <property name="d_taskEndDate" column="taskenddate" not-null="false" type="date"/>
+        <property name="d_taskCost" column="taskCost" not-null="true" type="big_decimal"/>
+        <property name="s_taskStatus" column="taskstatus" not-null="true" type="string" length="1"/>
+        <property name="i_taskCreateID" column="taskcreateid" not-null="true" type="int"/>
+        <property name="d_taskCreateDate" column="taskcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_taskDeleteID" column="taskdeleteid" not-null="false" type="int"/>
+        <property name="d_taskDeleteDate" column="taskdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_taskCancelID" column="taskcancelid" not-null="false" type="int"/>
+        <property name="d_taskCancelDate" column="taskcanceldate" not-null="false" type="timestamp"/>
+        <property name="s_taskCancelReason" column="taskcancelreason" not-null="false" type="string" length="200"/>
+        <property name="i_taskUpdateID" column="taskupdateid" not-null="true" type="int"/>
+        <property name="d_taskUpdateDate" column="taskupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_taskActive" column="taskactive" not-null="true" type="string" length="1"/>
+        <set name="steps" cascade="all">
+            <key column="step_taskcode"/>
+            <one-to-many class="T_Step"/>
+        </set>
+    </class>
+</hibernate-mapping>

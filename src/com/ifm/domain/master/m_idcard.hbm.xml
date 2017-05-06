@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_IDCard" table="m_idcard">
+        <meta attribute="class-description">
+            table master id card
+        </meta>
+        <id name="s_idCardCode" column="idcardcode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="s_idCardName" column="idcardname" not-null="true" type="string" length="50"/>
+        <property name="i_idCardCreateID" column="idcardcreateid" not-null="true" type="int"/>
+        <property name="d_idCardCreateDate" column="idcardcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_idCardDeleteID" column="idcarddeleteid" not-null="false" type="int"/>
+        <property name="d_idCardDeleteDate" column="idcarddeletedate" not-null="false" type="timestamp"/>
+        <property name="i_idCardUpdateID" column="idcardupdateid" not-null="true" type="int"/>
+        <property name="d_idCardUpdateDate" column="idcardupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_idCardActive" column="idcardactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

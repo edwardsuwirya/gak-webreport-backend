@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_ResponsibilityCenter" table="m_responsibilitycenter">
+        <meta attribute="class-description">
+            table master responsibility center
+        </meta>
+        <id name="s_responsibilityCenterCode" column="responsibilitycentercode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="responsibilitycenter_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="zone" column="responsibilitycenter_zonecode"
+                     class="M_Zone" not-null="false"/>
+        <many-to-one name="area" column="responsibilitycenter_areacode"
+                     class="M_Area" not-null="false"/>
+        <many-to-one name="city" column="responsibilitycenter_citycode"
+                     class="M_City" not-null="true"/>
+        <many-to-one name="coaar" column="responsibilitycenter_coaar"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coasales" column="responsibilitycenter_coasales"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coasalesretur" column="responsibilitycenter_coasalesretur"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coasalesdiscount" column="responsibilitycenter_coasalesdiscount"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coasalesvatout" column="responsibilitycenter_coasalesvatout"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coasalesexpense" column="responsibilitycenter_coasalesexpense"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coasalesservicecharge" column="responsibilitycenter_coasalesservicecharge"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coasalespromotion" column="responsibilitycenter_coasalespromotion"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coaap" column="responsibilitycenter_coaap"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coapurchase" column="responsibilitycenter_coapurchase"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coapurchaseretur" column="responsibilitycenter_coapurchaseretur"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coapurchasediscount" column="responsibilitycenter_coapurchasediscount"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coapurchasevatin" column="responsibilitycenter_coapurchasevatin"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coapurchaseexpense" column="responsibilitycenter_coapurchaseexpense"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coainventorystock" column="responsibilitycenter_coainventorystock"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coabegininventorybalance" column="responsibilitycenter_coabegininventorybalance"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coaendinventorybalance" column="responsibilitycenter_coaendinventorybalance"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coacogs" column="responsibilitycenter_coacogs"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coawaste" column="responsibilitycenter_coawaste"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coasample" column="responsibilitycenter_coasample"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coasalary" column="responsibilitycenter_coasalary"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coaallowance" column="responsibilitycenter_coaallowance"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coacommission" column="responsibilitycenter_coacommission"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coabonus" column="responsibilitycenter_coabonus"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coapnlrc" column="responsibilitycenter_coapnlrc"
+                     class="M_Coa" not-null="false"/>
+        <property name="s_responsibilityCenter_ZipCode" column="responsibilitycenter_zipcode" not-null="false"
+                  type="string" length="10"/>
+        <property name="s_responsibilityCenterRealCode" column="responsibilitycenterrealcode" not-null="true"
+                  type="string" length="10"/>
+        <property name="s_responsibilityCenterAlias" column="responsibilitycenteralias" not-null="false" type="string"
+                  length="10"/>
+        <property name="s_responsibilityCenterName" column="responsibilitycentername" not-null="true" type="string"
+                  length="50"/>
+        <property name="s_responsibilityCenterAddress" column="responsibilitycenteraddress" not-null="true"
+                  type="string" length="100"/>
+        <property name="s_responsibilityCenterPhone" column="responsibilitycenterphone" not-null="false" type="string"
+                  length="50"/>
+        <property name="s_responsibilityCenterFax" column="responsibilitycenterfax" not-null="false" type="string"
+                  length="50"/>
+        <property name="s_responsibilityCenterTaxCode" column="responsibilitycentertaxcode" not-null="false"
+                  type="string" length="50"/>
+        <property name="s_responsibilityCenterNpwp" column="responsibilitycenternpwp" not-null="false" type="string"
+                  length="50"/>
+        <property name="s_responsibilityCenterEmail" column="responsibilitycenteremail" not-null="false" type="string"
+                  length="50"/>
+        <property name="d_responsibilityCenterStartDate" column="responsibilitycenterstartdate" not-null="true"
+                  type="date"/>
+        <property name="d_responsibilityCenterSellingDate" column="responsibilitycentersellingdate" not-null="true"
+                  type="date"/>
+        <property name="d_responsibilityCenterUpdatetableSellingDate"
+                  column="responsibilitycenterupdatetablesellingdate" not-null="false" type="date"/>
+        <property name="d_responsibilityCenterPeriod" column="responsibilitycenterperiod" not-null="false" type="date"/>
+        <property name="s_responsibilityCenterServerLocalName" column="responsibilitycenterserverlocalname"
+                  not-null="false" type="string" length="100"/>
+        <property name="s_responsibilityCenterDBLocalName" column="responsibilitycenterdblocalname" not-null="false"
+                  type="string" length="100"/>
+        <property name="i_responsibilityCenterCreateID" column="responsibilitycentercreateid" not-null="true"
+                  type="int"/>
+        <property name="d_responsibilityCenterCreateDate" column="responsibilitycentercreatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="i_responsibilityCenterDeleteID" column="responsibilitycenterdeleteid" not-null="false"
+                  type="int"/>
+        <property name="d_responsibilityCenterDeleteDate" column="responsibilitycenterdeletedate" not-null="false"
+                  type="timestamp"/>
+        <property name="i_responsibilityCenterUpdateID" column="responsibilitycenterupdateid" not-null="true"
+                  type="int"/>
+        <property name="d_responsibilityCenterUpdateDate" column="responsibilitycenterupdatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="s_responsibilityCenterActive" column="responsibilitycenteractive" not-null="true" type="string"
+                  length="1"/>
+    </class>
+</hibernate-mapping>

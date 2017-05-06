@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.utility">
+    <class name="M_CurrentDate" table="m_currentdate">
+        <meta attribute="class-description">
+            table master current date time
+        </meta>
+        <id name="d_currentDate" column="currentdate" type="timestamp">
+            <generator class="assigned"/>
+        </id>
+    </class>
+</hibernate-mapping>

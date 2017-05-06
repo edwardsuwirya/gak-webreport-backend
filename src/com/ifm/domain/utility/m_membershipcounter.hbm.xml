@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.utility">
+    <class name="M_MembershipCounter" table="m_membershipcounter">
+        <meta attribute="class-description">
+            table membership counter
+        </meta>
+        <id name="s_companyCode" column="mmc_companycode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <property name="s_mmcMemberAutoNumber" column="mmcmemberautonumber" not-null="true" type="string" length="1"/>
+        <property name="s_mmcMemberPrefix" column="mmcmemberprefix" not-null="true" type="string" length="5"/>
+        <property name="s_mmcMemberType" column="mmcmembertype" not-null="true" type="string" length="1"/>
+        <property name="s_mmcMemberYear" column="mmcmemberyear" not-null="true" type="string" length="1"/>
+        <property name="s_mmcMemberMonth" column="mmcmembermonth" not-null="true" type="string" length="1"/>
+        <property name="s_mmcMemberSeparator" column="mmcmemberseparator" not-null="true" type="string" length="1"/>
+        <property name="i_mmcMemberDigit" column="mmcmemberdigit" not-null="true" type="int"/>
+        <property name="s_mmcMemberRegisterAutoNumber" column="mmcmemberregisterautonumber" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_mmcMemberRegisterPrefix" column="mmcmemberregisterprefix" not-null="true" type="string"
+                  length="5"/>
+        <property name="s_mmcMemberRegisterYear" column="mmcmemberregisteryear" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mmcMemberRegisterMonth" column="mmcmemberregistermonth" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mmcMemberRegisterSeparator" column="mmcmemberregisterseparator" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_mmcMemberRegisterDigit" column="mmcmemberregisterdigit" not-null="true" type="int"/>
+        <property name="s_mmcMemberExtentionAutoNumber" column="mmcmemberextentionautonumber" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_mmcMemberExtentionPrefix" column="mmcmemberextentionprefix" not-null="true" type="string"
+                  length="5"/>
+        <property name="s_mmcMemberExtentionYear" column="mmcmemberextentionyear" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mmcMemberExtentionMonth" column="mmcmemberextentionmonth" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mmcMemberExtentionSeparator" column="mmcmemberextentionseparator" not-null="true"
+                  type="string" length="1"/>
+        <property name="i_mmcMemberExtentionDigit" column="mmcmemberextentiondigit" not-null="true" type="int"/>
+        <property name="s_mmcMemberMutationAutoNumber" column="mmcmembermutationautonumber" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_mmcMemberMutationPrefix" column="mmcmembermutationprefix" not-null="true" type="string"
+                  length="5"/>
+        <property name="s_mmcMemberMutationYear" column="mmcmembermutationyear" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mmcMemberMutationMonth" column="mmcmembermutationmonth" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mmcMemberMutationSeparator" column="mmcmembermutationseparator" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_mmcMemberMutationDigit" column="mmcmembermutationdigit" not-null="true" type="int"/>
+        <property name="s_mmcMemberTerminationAutoNumber" column="mmcmemberterminationautonumber" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_mmcMemberTerminationPrefix" column="mmcmemberterminationprefix" not-null="true" type="string"
+                  length="5"/>
+        <property name="s_mmcMemberTerminationYear" column="mmcmemberterminationyear" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mmcMemberTerminationMonth" column="mmcmemberterminationmonth" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mmcMemberTerminationSeparator" column="mmcmemberterminationseparator" not-null="true"
+                  type="string" length="1"/>
+        <property name="i_mmcMemberTerminationDigit" column="mmcmemberterminationdigit" not-null="true" type="int"/>
+        <property name="s_mmcMemberPointAdditionAutoNumber" column="mmcmemberpointadditionautonumber" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_mmcMemberPointAdditionPrefix" column="mmcmemberpointadditionprefix" not-null="true"
+                  type="string" length="5"/>
+        <property name="s_mmcMemberPointAdditionYear" column="mmcmemberpointadditionyear" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_mmcMemberPointAdditionMonth" column="mmcmemberpointadditionmonth" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_mmcMemberPointAdditionSeparator" column="mmcmemberpointadditionseparator" not-null="true"
+                  type="string" length="1"/>
+        <property name="i_mmcMemberPointAdditionDigit" column="mmcmemberpointadditiondigit" not-null="true" type="int"/>
+        <property name="s_mmcMemberPointRedemptionAutoNumber" column="mmcmemberpointredemptionautonumber"
+                  not-null="true" type="string" length="1"/>
+        <property name="s_mmcMemberPointRedemptionPrefix" column="mmcmemberpointredemptionprefix" not-null="true"
+                  type="string" length="5"/>
+        <property name="s_mmcMemberPointRedemptionYear" column="mmcmemberpointredemptionyear" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_mmcMemberPointRedemptionMonth" column="mmcmemberpointredemptionmonth" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_mmcMemberPointRedemptionSeparator" column="mmcmemberpointredemptionseparator" not-null="true"
+                  type="string" length="1"/>
+        <property name="i_mmcMemberPointRedemptionDigit" column="mmcmemberpointredemptiondigit" not-null="true"
+                  type="int"/>
+        <property name="d_mmcDefaultExpiredDate" column="mmcdefaultexpireddate" not-null="false" type="date"/>
+        <property name="d_mmcOnePointAmount" column="mmconepointamount" not-null="true" type="big_decimal"/>
+        <property name="i_mmcCreateID" column="mmccreateid" not-null="true" type="int"/>
+        <property name="d_mmcCreateDate" column="mmccreatedate" not-null="true" type="timestamp"/>
+        <property name="i_mmcUpdateID" column="mmcupdateid" not-null="true" type="int"/>
+        <property name="d_mmcUpdateDate" column="mmcupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

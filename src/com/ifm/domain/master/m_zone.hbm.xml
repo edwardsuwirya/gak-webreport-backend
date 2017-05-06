@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Zone" table="m_zone">
+        <meta attribute="class-description">
+            table master zone / daerah / wilayah
+        </meta>
+        <id name="s_zoneCode" column="zonecode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="zone_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_zoneRealCode" column="zonerealcode" not-null="true" type="string" length="10"/>
+        <property name="s_zoneName" column="zonename" not-null="true" type="string" length="50"/>
+        <property name="i_zoneCreateID" column="zonecreateid" not-null="true" type="int"/>
+        <property name="d_zoneCreateDate" column="zonecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_zoneDeleteID" column="zonedeleteid" not-null="false" type="int"/>
+        <property name="d_zoneDeleteDate" column="zonedeletedate" not-null="false" type="timestamp"/>
+        <property name="i_zoneUpdateID" column="zoneupdateid" not-null="true" type="int"/>
+        <property name="d_zoneUpdateDate" column="zoneupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_zoneActive" column="zoneactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Department" table="m_department">
+        <meta attribute="class-description">
+            table master department
+        </meta>
+        <id name="s_departmentCode" column="departmentcode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="department_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="division" column="department_divisioncode"
+                     class="M_Division" not-null="true"/>
+        <property name="s_departmentRealCode" column="departmentrealcode" not-null="true" type="string" length="10"/>
+        <property name="s_departmentName" column="departmentname" not-null="true" type="string" length="50"/>
+        <property name="i_departmentCreateID" column="departmentcreateid" not-null="true" type="int"/>
+        <property name="d_departmentCreateDate" column="departmentcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_departmentDeleteID" column="departmentdeleteid" not-null="false" type="int"/>
+        <property name="d_departmentDeleteDate" column="departmentdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_departmentUpdateID" column="departmentupdateid" not-null="true" type="int"/>
+        <property name="d_departmentUpdateDate" column="departmentupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_departmentActive" column="departmentactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

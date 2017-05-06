@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Province" table="m_province">
+        <meta attribute="class-description">
+            table master province
+        </meta>
+        <id name="s_provinceCode" column="provincecode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="country" column="province_countrycode"
+                     class="M_Country" not-null="true"/>
+        <property name="s_provinceName" column="provincename" not-null="true" type="string" length="50"/>
+        <property name="s_provinceAreaCode" column="provinceareacode" not-null="false" type="string" length="5"/>
+        <property name="i_provinceCreateID" column="provincecreateid" not-null="true" type="int"/>
+        <property name="d_provinceCreateDate" column="provincecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_provinceDeleteID" column="provincedeleteid" not-null="false" type="int"/>
+        <property name="d_provinceDeleteDate" column="provincedeletedate" not-null="false" type="timestamp"/>
+        <property name="i_provinceUpdateID" column="provinceupdateid" not-null="true" type="int"/>
+        <property name="d_provinceUpdateDate" column="provinceupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_provinceActive" column="provinceactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

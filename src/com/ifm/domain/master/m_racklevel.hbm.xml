@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_RackLevel" table="m_racklevel">
+        <meta attribute="class-description">
+            table master rack level
+        </meta>
+        <id name="s_rackLevelCode" column="racklevelcode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="racklevel_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_rackLevelRealCode" column="racklevelrealcode" not-null="true" type="string" length="10"/>
+        <property name="s_rackLevelName" column="racklevelname" not-null="true" type="string" length="50"/>
+        <property name="i_rackLevelCreateID" column="racklevelcreateid" not-null="true" type="int"/>
+        <property name="d_rackLevelCreateDate" column="racklevelcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_rackLevelDeleteID" column="rackleveldeleteid" not-null="false" type="int"/>
+        <property name="d_rackLevelDeleteDate" column="rackleveldeletedate" not-null="false" type="timestamp"/>
+        <property name="i_rackLevelUpdateID" column="racklevelupdateid" not-null="true" type="int"/>
+        <property name="d_rackLevelUpdateDate" column="racklevelupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_rackLevelActive" column="racklevelactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

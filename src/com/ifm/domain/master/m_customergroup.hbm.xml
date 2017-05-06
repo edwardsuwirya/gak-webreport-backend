@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_CustomerGroup" table="m_customergroup">
+        <meta attribute="class-description">
+            table master customer group
+        </meta>
+        <id name="s_customerGroupCode" column="customergroupcode" type="string" length="30">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="customergroup_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="coaar" column="customergroup_coaar"
+                     class="M_Coa" not-null="false"/>
+        <many-to-one name="coasales" column="customergroup_coasales"
+                     class="M_Coa" not-null="false"/>
+        <property name="s_customerGroupRealCode" column="customergrouprealcode" not-null="true" type="string"
+                  length="20"/>
+        <property name="s_customerGroupName" column="customergroupname" not-null="true" type="string" length="50"/>
+        <property name="i_customerGroupCreateID" column="customergroupcreateid" not-null="true" type="int"/>
+        <property name="d_customerGroupCreateDate" column="customergroupcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_customerGroupDeleteID" column="customergroupdeleteid" not-null="false" type="int"/>
+        <property name="d_customerGroupDeleteDate" column="customergroupdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_customerGroupUpdateID" column="customergroupupdateid" not-null="true" type="int"/>
+        <property name="d_customerGroupUpdateDate" column="customergroupupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_customerGroupActive" column="customergroupactive" not-null="true" type="string" length="1"/>
+        <set name="responsibilitycentercoas"
+             cascade="all">
+            <key column="customergroupresponsibilitycentercoa_customergroupcode"/>
+            <one-to-many class="M_CustomerGroupResponsibilityCenterCoa"/>
+        </set>
+    </class>
+</hibernate-mapping>

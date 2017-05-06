@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Article" table="m_article">
+        <meta attribute="class-description">
+            table master article
+        </meta>
+        <id name="s_articleCode" column="articlecode" type="string" length="100">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="article_companycode"
+                     class="M_Company" not-null="true"/>
+        <many-to-one name="articleGroup" column="article_articlegroupcode"
+                     class="M_ArticleGroup" not-null="true"/>
+        <many-to-one name="uom" column="article_uomcode"
+                     class="M_Uom" not-null="true"/>
+        <many-to-one name="uomlength" column="article_lengthuom"
+                     class="M_Uom" not-null="false"/>
+        <many-to-one name="uomwidth" column="article_widthuom"
+                     class="M_Uom" not-null="false"/>
+        <many-to-one name="uomheight" column="article_heightuom"
+                     class="M_Uom" not-null="false"/>
+        <many-to-one name="brand" column="article_brandcode"
+                     class="M_Brand" not-null="false"/>
+        <many-to-one name="articleSpecialSpecification"
+                     column="article_articlespecialspecificationcode"
+                     class="M_ArticleSpecialSpecification"
+                     not-null="false"/>
+        <many-to-one name="articleDepartment"
+                     column="article_articledepartmentcode"
+                     class="M_ArticleDepartment"
+                     not-null="false"/>
+        <many-to-one name="articleCategory"
+                     column="article_articlecategorycode"
+                     class="M_ArticleCategory"
+                     not-null="false"/>
+        <many-to-one name="articleClass"
+                     column="article_articleclasscode"
+                     class="M_ArticleClass"
+                     not-null="false"/>
+        <many-to-one name="articleReport"
+                     column="article_reportcode"
+                     class="com.ifm.domain.utility.M_Report"
+                     not-null="false"/>
+        <property name="s_articleRealCode" column="articlerealcode" not-null="true" type="string" length="90"/>
+        <property name="s_articleBarcode" column="articlebarcode" not-null="false" type="string" length="50"/>
+        <property name="s_articleName" column="articlename" not-null="true" type="string" length="100"/>
+        <property name="s_articleNameLong" column="articlenamelong" not-null="true" type="string" length="200"/>
+        <property name="s_articleDisplayName" column="articledisplayname" not-null="true" type="string" length="50"/>
+        <property name="s_articleDescription" column="articledescription" not-null="false" type="string" length="100"/>
+        <property name="d_articlePrice" column="articleprice" not-null="true" type="big_decimal"/>
+        <property name="d_articleLength" column="articlelength" not-null="false" type="big_decimal"/>
+        <property name="d_articleWidth" column="articlewidth" not-null="false" type="big_decimal"/>
+        <property name="d_articleHeight" column="articleheight" not-null="false" type="big_decimal"/>
+        <property name="s_articleSize" column="articlesize" not-null="false" type="string" length="30"/>
+        <property name="s_articleWallThickness" column="articlewallthickness" not-null="false" type="string"
+                  length="50"/>
+        <property name="s_articleSpecification" column="articlespecification" not-null="false" type="string"
+                  length="50"/>
+        <property name="s_articleSpecificationLong" column="articlespecificationlong" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_articleRatingPressure" column="articleratingpressure" not-null="false" type="string"
+                  length="50"/>
+        <property name="d_articleMinStock" column="articleminstock" not-null="true" type="big_decimal" scale="5"
+                  precision="19"/>
+        <property name="d_articleMaxStock" column="articlemaxstock" not-null="true" type="big_decimal" scale="5"
+                  precision="19"/>
+        <property name="d_articleReorder" column="articlereorder" not-null="true" type="big_decimal" scale="5"
+                  precision="19"/>
+        <property name="s_articleStock" column="articlestock" not-null="true" type="string" length="1"/>
+        <property name="s_articleCogs" column="articlecogs" not-null="true" type="string" length="1"/>
+        <property name="s_articleSpareParts" column="articlespareparts" not-null="true" type="string" length="1"/>
+        <property name="s_articleDiscontinue" column="articlediscontinue" not-null="true" type="string" length="1"/>
+        <property name="s_articleProductBundlingRecipe" column="articleproductbundlingrecipe" not-null="true"
+                  type="string" length="1"/>
+        <property name="s_articleParent" column="articleparent" not-null="true" type="string" length="1"/>
+        <property name="d_articleTaxPct" column="articletaxpct" not-null="true" type="big_decimal"/>
+        <property name="d_articlePB1Pct" column="articlepb1pct" not-null="true" type="big_decimal"/>
+        <property name="d_articleServiceChargePct" column="articleservicechargepct" not-null="true" type="big_decimal"/>
+        <property name="d_articleBonusPct" column="articlebonuspct" not-null="true" type="big_decimal"/>
+        <property name="b_articleCatalogFilePath" column="articlecatalogfilepath" not-null="false" type="binary"
+                  length="1000000"/>
+        <property name="s_articleCodeParent" column="articlecodeparent" not-null="false" type="string" length="100"/>
+        <property name="i_articleCreateID" column="articlecreateid" not-null="true" type="int"/>
+        <property name="d_articleCreateDate" column="articlecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_articleDeleteID" column="articledeleteid" not-null="false" type="int"/>
+        <property name="d_articleDeleteDate" column="articledeletedate" not-null="false" type="timestamp"/>
+        <property name="i_articleUpdateID" column="articleupdateid" not-null="true" type="int"/>
+        <property name="d_articleUpdateDate" column="articleupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_articleActive" column="articleactive" not-null="true" type="string" length="1"/>
+        <set name="uoms"
+             cascade="all">
+            <key column="articleuom_articlecode"/>
+            <one-to-many class="M_ArticleUom"/>
+        </set>
+        <set name="responsibilitycenterprices"
+             cascade="all">
+            <key column="articleresponsibilitycenterprice_articlecode"/>
+            <one-to-many class="M_ArticleResponsibilityCenterPrice"/>
+        </set>
+        <set name="zoneprices"
+             cascade="all">
+            <key column="articlezoneprice_articlecode"/>
+            <one-to-many class="M_ArticleZonePrice"/>
+        </set>
+    </class>
+</hibernate-mapping>

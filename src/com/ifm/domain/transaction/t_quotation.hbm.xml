@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_Quotation" table="t_quotation">
+        <meta attribute="class-description">
+            table transaction quotation
+        </meta>
+        <id name="s_quotationNo" column="quotationno" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="quotation_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="responsibilitycenter" column="quotation_responsibilitycentercode"
+                     class="com.ifm.domain.master.M_ResponsibilityCenter" not-null="true"/>
+        <many-to-one name="currency" column="quotation_currencycode"
+                     class="com.ifm.domain.master.M_Currency" not-null="true"/>
+        <many-to-one name="customer" column="quotation_customercode"
+                     class="com.ifm.domain.master.M_Customer" not-null="true"/>
+        <many-to-one name="employee" column="quotation_employeecode"
+                     class="com.ifm.domain.master.M_Employee" not-null="false"/>
+        <property name="s_quotationRealNo" column="quotationrealno" not-null="true" type="string" length="40"/>
+        <property name="s_quotationCustomerInquiry" column="quotationcustomerinquiry" not-null="false" type="string"
+                  length="50"/>
+        <property name="d_quotationDate" column="quotationdate" not-null="true" type="timestamp"/>
+        <property name="s_quotationAddress" column="quotationaddress" not-null="false" type="string" length="200"/>
+        <property name="s_quotationPhone" column="quotationphone" not-null="false" type="string" length="50"/>
+        <property name="s_quotationFax" column="quotationfax" not-null="false" type="string" length="50"/>
+        <property name="s_quotationAttn" column="quotationattn" not-null="false" type="string" length="100"/>
+        <property name="d_quotationExRate" column="quotationexrate" not-null="true" type="big_decimal"/>
+        <property name="s_quotationDescription" column="quotationdescription" not-null="false" type="string"
+                  length="100"/>
+        <property name="s_quotationBanner1" column="quotationbanner1" not-null="false" type="string" length="100"/>
+        <property name="s_quotationBanner2" column="quotationbanner2" not-null="false" type="string" length="100"/>
+        <property name="s_quotationDeliveryTimeDescription" column="quotationdeliverytimedescription" not-null="false"
+                  type="string" length="100"/>
+        <property name="s_quotationDeliveryPointDescription" column="quotationdeliverypointdescription" not-null="false"
+                  type="string" length="100"/>
+        <property name="i_quotationToc" column="quotationtoc" not-null="true" type="int"/>
+        <property name="s_quotationShipping" column="quotationshipping" not-null="false" type="string" length="100"/>
+        <property name="s_quotationPaymentDescription" column="quotationpaymentdescription" not-null="false"
+                  type="string" length="100"/>
+        <property name="d_quotationSubTotal" column="quotationsubtotal" not-null="true" type="big_decimal"/>
+        <property name="d_quotationDiscount" column="quotationdiscount" not-null="true" type="big_decimal"/>
+        <property name="d_quotationCharge" column="quotationcharge" not-null="true" type="big_decimal"/>
+        <property name="d_quotationTax" column="quotationtax" not-null="true" type="big_decimal"/>
+        <property name="d_quotationPph" column="quotationpph" not-null="true" type="big_decimal"/>
+        <property name="d_quotationGrandTotal" column="quotationgrandtotal" not-null="true" type="big_decimal"/>
+        <property name="s_quotationStatus" column="quotationstatus" not-null="true" type="string" length="1"/>
+        <property name="i_quotationPrinted" column="quotationprinted" not-null="true" type="int"/>
+        <property name="i_quotationCreateID" column="quotationcreateid" not-null="true" type="int"/>
+        <property name="d_quotationCreateDate" column="quotationcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_quotationApproveID" column="quotationapproveid" not-null="false" type="int"/>
+        <property name="d_quotationApproveDate" column="quotationapprovedate" not-null="false" type="timestamp"/>
+        <property name="i_quotationCancelID" column="quotationcancelid" not-null="false" type="int"/>
+        <property name="d_quotationCancelDate" column="quotationcanceldate" not-null="false" type="timestamp"/>
+        <property name="s_quotationCancelReason" column="quotationcancelreason" not-null="false" type="string"
+                  length="200"/>
+        <property name="i_quotationUpdateID" column="quotationupdateid" not-null="true" type="int"/>
+        <property name="d_quotationUpdateDate" column="quotationupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_quotationActive" column="quotationactive" not-null="true" type="string" length="1"/>
+        <set name="details"
+             cascade="all">
+            <key column="quotationd_quotationno"/>
+            <one-to-many class="T_QuotationD"/>
+        </set>
+        <set name="substitutes"
+             cascade="all">
+            <key column="quotationsubstitute_quotationno"/>
+            <one-to-many class="T_QuotationSubstitute"/>
+        </set>
+    </class>
+</hibernate-mapping>

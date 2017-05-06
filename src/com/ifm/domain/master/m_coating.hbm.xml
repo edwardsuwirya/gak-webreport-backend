@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Coating" table="m_coating">
+        <meta attribute="class-description">
+            table master coating
+        </meta>
+        <id name="s_coatingCode" column="coatingcode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="coating_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_coatingRealCode" column="coatingrealcode" not-null="true" type="string" length="10"/>
+        <property name="s_coatingName" column="coatingname" not-null="true" type="string" length="50"/>
+        <property name="i_coatingCreateID" column="coatingcreateid" not-null="true" type="int"/>
+        <property name="d_coatingCreateDate" column="coatingcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_coatingDeleteID" column="coatingdeleteid" not-null="false" type="int"/>
+        <property name="d_coatingDeleteDate" column="coatingdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_coatingUpdateID" column="coatingupdateid" not-null="true" type="int"/>
+        <property name="d_coatingUpdateDate" column="coatingupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_coatingActive" column="coatingactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

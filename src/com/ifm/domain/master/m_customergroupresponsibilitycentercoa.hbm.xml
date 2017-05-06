@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_CustomerGroupResponsibilityCenterCoa" table="m_customergroupresponsibilitycentercoa">
+        <meta attribute="class-description">
+            table coa customer group (customer group's child)
+        </meta>
+        <id name="s_customerGroupResponsibilityCenterCoaCode"
+            column="customergroupresponsibilitycentercoacode" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="responsibilitycenter" column="customergroupresponsibilitycentercoa_responsibilitycentercode"
+                     class="M_ResponsibilityCenter" not-null="true"/>
+        <many-to-one name="coaar" column="customergroupresponsibilitycentercoa_coaar"
+                     class="M_Coa" not-null="true"/>
+        <many-to-one name="coasales" column="customergroupresponsibilitycentercoa_coasales"
+                     class="M_Coa" not-null="true"/>
+        <property name="i_customerGroupResponsibilityCenterCoaCreateID"
+                  column="customergroupresponsibilitycentercoacreateid" not-null="true" type="int"/>
+        <property name="d_customerGroupResponsibilityCenterCoaCreateDate"
+                  column="customergroupresponsibilitycentercoacreatedate" not-null="true" type="timestamp"/>
+        <property name="i_customerGroupResponsibilityCenterCoaUpdateID"
+                  column="customergroupresponsibilitycentercoaupdateid" not-null="true" type="int"/>
+        <property name="d_customerGroupResponsibilityCenterCoaUpdateDate"
+                  column="customergroupresponsibilitycentercoaupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

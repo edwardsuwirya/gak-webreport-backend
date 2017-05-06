@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.utility">
+    <class name="M_InventoryCounter" table="m_inventorycounter">
+        <meta attribute="class-description">
+            table sales counter
+        </meta>
+        <id name="s_companyCode" column="mic_companycode" type="string" length="10">
+            <generator class="assigned"/>
+        </id>
+        <property name="s_micBundlingAutoNumber" column="mictbundlingautonumber" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_micBundlingPrefix" column="mictbundlingprefix" not-null="true" type="string" length="5"/>
+        <property name="s_micBundlingYear" column="mictbundlingyear" not-null="true" type="string" length="1"/>
+        <property name="s_micBundlingMonth" column="mictbundlingmonth" not-null="true" type="string" length="1"/>
+        <property name="s_micBundlingSeparator" column="mictbundlingseparator" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_micBundlingDigit" column="mictbundlingdigit" not-null="true" type="int"/>
+        <property name="s_micBundlingNote1" column="mictbundlingnote1" not-null="false" type="string" length="100"/>
+        <property name="s_micBundlingNote2" column="mictbundlingnote2" not-null="false" type="string" length="100"/>
+        <property name="s_micBundlingNote3" column="mictbundlingnote3" not-null="false" type="string" length="100"/>
+        <property name="i_micBundlingMaxArticle" column="mictbundlingmaxarticle" not-null="false" type="int"/>
+        <property name="s_micTransferAutoNumber" column="mictransferautonumber" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_micTransferPrefix" column="mictransferprefix" not-null="true" type="string" length="5"/>
+        <property name="s_micTransferWarehouse" column="mictransferwarehouse" not-null="true" type="string" length="1"/>
+        <property name="s_micTransferYear" column="mictransferyear" not-null="true" type="string" length="1"/>
+        <property name="s_micTransferMonth" column="mictransfermonth" not-null="true" type="string" length="1"/>
+        <property name="s_micTransferSeparator" column="mictransferseparator" not-null="true" type="string" length="1"/>
+        <property name="i_micTransferDigit" column="mictransferdigit" not-null="true" type="int"/>
+        <property name="s_micTransferNote1" column="mictransfernote1" not-null="false" type="string" length="100"/>
+        <property name="s_micTransferNote2" column="mictransfernote2" not-null="false" type="string" length="100"/>
+        <property name="s_micTransferNote3" column="mictransfernote3" not-null="false" type="string" length="100"/>
+        <property name="i_micTransferMaxArticle" column="mictransfermaxarticle" not-null="false" type="int"/>
+        <property name="s_micUsageAutoNumber" column="micusageautonumber" not-null="true" type="string" length="1"/>
+        <property name="s_micUsagePrefix" column="micusageprefix" not-null="true" type="string" length="5"/>
+        <property name="s_micUsageWarehouse" column="micusagewarehouse" not-null="true" type="string" length="1"/>
+        <property name="s_micUsageYear" column="micusageyear" not-null="true" type="string" length="1"/>
+        <property name="s_micUsageMonth" column="micusagemonth" not-null="true" type="string" length="1"/>
+        <property name="s_micUsageSeparator" column="micusageseparator" not-null="true" type="string" length="1"/>
+        <property name="i_micUsageDigit" column="micusagedigit" not-null="true" type="int"/>
+        <property name="s_micUsageNote1" column="micusagenote1" not-null="false" type="string" length="100"/>
+        <property name="s_micUsageNote2" column="micusagenote2" not-null="false" type="string" length="100"/>
+        <property name="s_micUsageNote3" column="micusagenote3" not-null="false" type="string" length="100"/>
+        <property name="i_micUsageMaxArticle" column="micusagemaxarticle" not-null="false" type="int"/>
+        <property name="s_micAdjustmentAutoNumber" column="micadjustmentautonumber" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_micAdjustmentPrefix" column="micadjustmentprefix" not-null="true" type="string" length="5"/>
+        <property name="s_micAdjustmentWarehouse" column="micadjustmentwarehouse" not-null="true" type="string"
+                  length="1"/>
+        <property name="s_micAdjustmentYear" column="micadjustmentyear" not-null="true" type="string" length="1"/>
+        <property name="s_micAdjustmentMonth" column="micadjustmentmonth" not-null="true" type="string" length="1"/>
+        <property name="s_micAdjustmentSeparator" column="micadjustmentseparator" not-null="true" type="string"
+                  length="1"/>
+        <property name="i_micAdjustmentDigit" column="micadjustmentdigit" not-null="true" type="int"/>
+        <property name="s_micAdjustmentNote1" column="micadjustmentnote1" not-null="false" type="string" length="100"/>
+        <property name="s_micAdjustmentNote2" column="micadjustmentnote2" not-null="false" type="string" length="100"/>
+        <property name="s_micAdjustmentNote3" column="micadjustmentnote3" not-null="false" type="string" length="100"/>
+        <property name="i_micAdjustmentMaxArticle" column="micadjustmentmaxarticle" not-null="false" type="int"/>
+        <property name="i_micCreateID" column="miccreateid" not-null="true" type="int"/>
+        <property name="d_micCreateDate" column="miccreatedate" not-null="true" type="timestamp"/>
+        <property name="i_micUpdateID" column="micupdateid" not-null="true" type="int"/>
+        <property name="d_micUpdateDate" column="micupdatedate" not-null="true" type="timestamp"/>
+    </class>
+</hibernate-mapping>

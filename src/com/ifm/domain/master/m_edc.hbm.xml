@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Edc" table="m_edc">
+        <meta attribute="class-description">
+            table master edc (electronic data capture)
+        </meta>
+        <id name="s_edcCode" column="edccode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="edc_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_edcRealCode" column="edcrealcode" not-null="true" type="string" length="10"/>
+        <property name="s_edcName" column="edcname" not-null="true" type="string" length="50"/>
+        <property name="i_edcCreateID" column="edccreateid" not-null="true" type="int"/>
+        <property name="d_edcCreateDate" column="edccreatedate" not-null="true" type="timestamp"/>
+        <property name="i_edcDeleteID" column="edcdeleteid" not-null="false" type="int"/>
+        <property name="d_edcDeleteDate" column="edcdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_edcUpdateID" column="edcupdateid" not-null="true" type="int"/>
+        <property name="d_edcUpdateDate" column="edcupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_edcActive" column="edcactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

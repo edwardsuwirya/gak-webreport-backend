@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.transaction">
+    <class name="T_StockReal" table="t_stockreal">
+        <meta attribute="class-description">
+            table stock real
+        </meta>
+        <composite-id>
+            <key-many-to-one name="company" column="tsr_companycode"
+                             class="com.ifm.domain.master.M_Company"/>
+            <key-many-to-one name="article" column="tsr_articlecode"
+                             class="com.ifm.domain.master.M_Article"/>
+            <key-many-to-one name="warehouse" column="tsr_warehousecode"
+                             class="com.ifm.domain.master.M_Warehouse"/>
+            <key-property name="s_tsrTransSerialNo" column="tsrtransserialno" type="string" length="50"/>
+        </composite-id>
+        <property name="d_tsrTransQty" column="tsrtransqty" not-null="true" type="big_decimal" scale="5"
+                  precision="19"/>
+        <many-to-one name="qtyuom" column="tsr_qtyuomcode"
+                     class="com.ifm.domain.master.M_Uom" not-null="true"/>
+    </class>
+</hibernate-mapping>

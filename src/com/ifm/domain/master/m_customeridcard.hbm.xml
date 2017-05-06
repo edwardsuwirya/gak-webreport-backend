@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_CustomerIDCard" table="m_customeridcard">
+        <meta attribute="class-description">
+            table master customer id card
+        </meta>
+        <id name="s_customerIDCardCode" column="customeridcardcode" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="idcard" column="customeridcard_idcardcode"
+                     class="M_IDCard" not-null="true"/>
+        <property name="i_customerIDCardNo" column="customeridcardno" not-null="true" type="int"/>
+        <property name="s_customerIDCardIDCardNo" column="customeridcardidcardno" not-null="true" type="string"
+                  length="50"/>
+        <property name="i_customerIDCardCreateID" column="customeridcardcreateid" not-null="true" type="int"/>
+        <property name="d_customerIDCardCreateDate" column="customeridcardcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_customerIDCardDeleteID" column="customeridcarddeleteid" not-null="false" type="int"/>
+        <property name="d_customerIDCardDeleteDate" column="customeridcarddeletedate" not-null="false"
+                  type="timestamp"/>
+        <property name="i_customerIDCardUpdateID" column="customeridcardupdateid" not-null="true" type="int"/>
+        <property name="d_customerIDCardUpdateDate" column="customeridcardupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_customerIDCardActive" column="customeridcardactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

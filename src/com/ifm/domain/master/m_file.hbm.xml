@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_File" table="m_file">
+        <meta attribute="class-description">
+            table master file
+        </meta>
+        <id name="s_fileCode" column="filecode" type="string" length="40">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="file_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_fileRealCode" column="filerealcode" not-null="true" type="string" length="30"/>
+        <property name="s_fileName" column="filename" not-null="true" type="string" length="200"/>
+        <property name="s_fileFullPath" column="filefullpath" not-null="true" type="string" length="500"/>
+        <property name="s_fileDirectory" column="filedirectory" not-null="true" type="string" length="300"/>
+        <property name="s_fileExt" column="fileext" not-null="true" type="string" length="20"/>
+        <property name="i_fileSize" column="filesize" not-null="true" type="int"/>
+        <property name="s_fileFullPathSource" column="filefullpathsource" not-null="true" type="string" length="500"/>
+        <property name="i_fileCreateID" column="filecreateid" not-null="true" type="int"/>
+        <property name="d_fileCreateDate" column="filecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_fileDeleteID" column="filedeleteid" not-null="false" type="int"/>
+        <property name="d_fileDeleteDate" column="filedeletedate" not-null="false" type="timestamp"/>
+        <property name="i_fileUpdateID" column="fileupdateid" not-null="true" type="int"/>
+        <property name="d_fileUpdateDate" column="fileupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_fileActive" column="fileactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

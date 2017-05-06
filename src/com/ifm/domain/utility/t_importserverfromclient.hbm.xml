@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.utility">
+    <class name="T_ImportServerFromClient" table="t_importserverfromclient">
+        <meta attribute="class-description">
+            table system log automatic export server to client
+        </meta>
+        <id name="i_tisfcID" column="tisfcid" type="int">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="company" column="tisfc_companycode"
+                     class="com.ifm.domain.master.M_Company" not-null="true"/>
+        <many-to-one name="responsibilitycenter" column="tisfc_responsibilitycentercode"
+                     class="com.ifm.domain.master.M_ResponsibilityCenter" not-null="true"/>
+        <property name="s_tisfcLocalServerName" column="tisfclocalservername" not-null="true" type="string"
+                  length="100"/>
+        <property name="s_tisfcLocalDBName" column="tisfclocaldbname" not-null="true" type="string" length="50"/>
+        <property name="d_tisfcDate" column="tisfcdate" not-null="true" type="timestamp"/>
+        <property name="s_tisfcTable" column="tisfctable" not-null="true" type="string" length="100"/>
+        <property name="s_tisfcStatus" column="tisfcstatus" not-null="true" type="string" length="1"/>
+        <property name="s_tisfcDescription" column="tisfcdescription" not-null="false" type="string" length="100"/>
+    </class>
+</hibernate-mapping>

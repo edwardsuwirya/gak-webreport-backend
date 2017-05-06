@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_CustomerContact" table="m_customercontact">
+        <meta attribute="class-description">
+            table master customer contact
+        </meta>
+        <id name="s_customerContactCode" column="customercontactcode" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <property name="i_customerContactNo" column="customercontactno" not-null="true" type="int"/>
+        <property name="s_customerContactName" column="customercontactname" not-null="true" type="string" length="50"/>
+        <property name="s_customerContactPosition" column="customercontactposition" not-null="false" type="string"
+                  length="50"/>
+        <property name="s_customerContactPhone" column="customercontactphone" not-null="false" type="string"
+                  length="20"/>
+        <property name="s_customerContactFax" column="customercontactfax" not-null="false" type="string" length="20"/>
+        <property name="s_customerContactCellPhone" column="customercontactcellphone" not-null="false" type="string"
+                  length="20"/>
+        <property name="i_customerContactCreateID" column="customercontactcreateid" not-null="true" type="int"/>
+        <property name="d_customerContactCreateDate" column="customercontactcreatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="i_customerContactDeleteID" column="customercontactdeleteid" not-null="false" type="int"/>
+        <property name="d_customerContactDeleteDate" column="customercontactdeletedate" not-null="false"
+                  type="timestamp"/>
+        <property name="i_customerContactUpdateID" column="customercontactupdateid" not-null="true" type="int"/>
+        <property name="d_customerContactUpdateDate" column="customercontactupdatedate" not-null="true"
+                  type="timestamp"/>
+        <property name="s_customerContactActive" column="customercontactactive" not-null="true" type="string"
+                  length="1"/>
+    </class>
+</hibernate-mapping>

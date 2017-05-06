@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Religion" table="m_religion">
+        <meta attribute="class-description">
+            table master religion
+        </meta>
+        <id name="i_religionID" column="religionid" type="int">
+            <generator class="assigned"/>
+        </id>
+        <property name="s_religionName" column="religionname" not-null="true" type="string" length="50"/>
+        <property name="i_religionCreateID" column="religioncreateid" not-null="true" type="int"/>
+        <property name="d_religionCreateDate" column="religioncreatedate" not-null="true" type="timestamp"/>
+        <property name="i_religionDeleteID" column="religiondeleteid" not-null="false" type="int"/>
+        <property name="d_religionDeleteDate" column="religiondeletedate" not-null="false" type="timestamp"/>
+        <property name="i_religionUpdateID" column="religionupdateid" not-null="true" type="int"/>
+        <property name="d_religionUpdateDate" column="religionupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_religionActive" column="religionactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

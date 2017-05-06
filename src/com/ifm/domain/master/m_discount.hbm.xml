@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_Discount" table="m_discount">
+        <meta attribute="class-description">
+            table master discount
+        </meta>
+        <id name="s_discountCode" column="discountcode" type="string" length="20">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="discount_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_discountRealCode" column="discountrealcode" not-null="true" type="string" length="10"/>
+        <property name="s_discountName" column="discountname" not-null="true" type="string" length="50"/>
+        <property name="d_discountPercent" column="discountpercent" not-null="true" type="big_decimal"/>
+        <property name="d_discountAmount" column="discountamount" not-null="true" type="big_decimal"/>
+        <property name="d_discountStartDate" column="discountstartdate" not-null="true" type="date"/>
+        <property name="d_discountEndDate" column="discountenddate" not-null="false" type="date"/>
+        <property name="d_discountStartTime" column="discountstarttime" not-null="false" type="time"/>
+        <property name="d_discountEndTime" column="discountendtime" not-null="false" type="time"/>
+        <property name="s_discountPromoOnPromo" column="discountpromoonpromo" not-null="true" type="string" length="1"/>
+        <property name="s_discountMemberOnly" column="discountmemberonly" not-null="true" type="string" length="1"/>
+        <property name="s_discountMonday" column="discountmonday" not-null="true" type="string" length="1"/>
+        <property name="s_discountSunday" column="discountsunday" not-null="true" type="string" length="1"/>
+        <property name="s_discountTuesday" column="discounttuesday" not-null="true" type="string" length="1"/>
+        <property name="s_discountWednesday" column="discountwednesday" not-null="true" type="string" length="1"/>
+        <property name="s_discountThursday" column="discountthursday" not-null="true" type="string" length="1"/>
+        <property name="s_discountFriday" column="discountfriday" not-null="true" type="string" length="1"/>
+        <property name="s_discountSaturday" column="discountsaturday" not-null="true" type="string" length="1"/>
+        <property name="s_discountAllArticle" column="discountallarticle" not-null="false" type="string" length="1"/>
+        <property name="s_discountAllRC" column="discountallrc" not-null="false" type="string" length="1"/>
+        <property name="i_discountPointRedeem" column="discountpointredeem" not-null="false" type="int"/>
+        <property name="i_discountCreateID" column="discountcreateid" not-null="true" type="int"/>
+        <property name="d_discountCreateDate" column="discountcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_discountDeleteID" column="discountdeleteid" not-null="false" type="int"/>
+        <property name="d_discountDeleteDate" column="discountdeletedate" not-null="false" type="timestamp"/>
+        <property name="i_discountUpdateID" column="discountupdateid" not-null="true" type="int"/>
+        <property name="d_discountUpdateDate" column="discountupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_discountActive" column="discountactive" not-null="true" type="string" length="1"/>
+        <set name="responsibilitycenters" cascade="save-update" table="r_discount_responsibilitycenter">
+            <key column="rdr_discountcode"/>
+            <many-to-many column="rdr_responsibilitycentercode" class="M_ResponsibilityCenter"/>
+        </set>
+        <set name="articles" cascade="save-update" table="r_discount_article">
+            <key column="rda_discountcode"/>
+            <many-to-many column="rda_articlecode" class="M_Article"/>
+        </set>
+        <set name="membertypes" cascade="save-update" table="r_discount_membertype">
+            <key column="rdm_discountcode"/>
+            <many-to-many column="rdm_membertypecode" class="M_MemberType"/>
+        </set>
+        <set name="customers" cascade="save-update" table="r_discount_customer">
+            <key column="rdc_discountcode"/>
+            <many-to-many column="rdc_customercode" class="M_Customer"/>
+        </set>
+    </class>
+</hibernate-mapping>

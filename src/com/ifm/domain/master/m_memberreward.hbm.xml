@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_MemberReward" table="m_memberreward">
+        <meta attribute="class-description">
+            table master member reward
+        </meta>
+        <id name="s_memberRewardCode" column="memberrewardcode" type="string" length="30">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="memberreward_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_memberRewardRealCode" column="memberrewardrealcode" not-null="true" type="string"
+                  length="20"/>
+        <property name="s_memberRewardName" column="memberrewardname" not-null="true" type="string" length="50"/>
+        <property name="b_memberRewardPictureFile" column="memberrewardpicturefile" not-null="false" type="binary"
+                  length="1000000"/>
+        <property name="i_memberRewardPointRedeem" column="memberrewardpointredeem" not-null="true" type="int"/>
+        <property name="i_memberRewardCreateID" column="memberrewardcreateid" not-null="true" type="int"/>
+        <property name="d_memberRewardCreateDate" column="memberrewardcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_memberRewardDeleteID" column="memberrewarddeleteid" not-null="false" type="int"/>
+        <property name="d_memberRewardDeleteDate" column="memberrewarddeletedate" not-null="false" type="timestamp"/>
+        <property name="i_memberRewardUpdateID" column="memberrewardupdateid" not-null="true" type="int"/>
+        <property name="d_memberRewardUpdateDate" column="memberrewardupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_memberRewardActive" column="memberrewardactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

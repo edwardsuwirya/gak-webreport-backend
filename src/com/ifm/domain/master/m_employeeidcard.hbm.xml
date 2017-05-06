@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_EmployeeIDCard" table="m_employeeidcard">
+        <meta attribute="class-description">
+            table master employee id card
+        </meta>
+        <id name="s_employeeIDCardCode" column="employeeidcardcode" type="string" length="50">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="idcard" column="employeeidcard_idcardcode"
+                     class="M_IDCard" not-null="true"/>
+        <property name="i_employeeIDCardNo" column="employeeidcardno" not-null="true" type="int"/>
+        <property name="s_employeeIDCardIDCardNo" column="employeeidcardidcardno" not-null="true" type="string"
+                  length="50"/>
+        <property name="i_employeeIDCardCreateID" column="employeeidcardcreateid" not-null="true" type="int"/>
+        <property name="d_employeeIDCardCreateDate" column="employeeidcardcreatedate" not-null="true" type="timestamp"/>
+        <property name="i_employeeIDCardDeleteID" column="employeeidcarddeleteid" not-null="false" type="int"/>
+        <property name="d_employeeIDCardDeleteDate" column="employeeidcarddeletedate" not-null="false"
+                  type="timestamp"/>
+        <property name="i_employeeIDCardUpdateID" column="employeeidcardupdateid" not-null="true" type="int"/>
+        <property name="d_employeeIDCardUpdateDate" column="employeeidcardupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_employeeIDCardActive" column="employeeidcardactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>

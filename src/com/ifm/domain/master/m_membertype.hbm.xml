@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ifm.domain.master">
+    <class name="M_MemberType" table="m_membertype">
+        <meta attribute="class-description">
+            table master member type
+        </meta>
+        <id name="s_memberTypeCode" column="membertypecode" type="string" length="30">
+            <generator class="assigned"/>
+        </id>
+        <many-to-one name="company" column="membertype_companycode"
+                     class="M_Company" not-null="true"/>
+        <property name="s_memberTypeRealCode" column="membertyperealcode" not-null="true" type="string" length="20"/>
+        <property name="s_memberTypeName" column="membertypename" not-null="true" type="string" length="50"/>
+        <property name="b_memberTypePictureFile" column="membertypepicturefile" not-null="false" type="binary"
+                  length="1000000"/>
+        <property name="i_memberTypeLevel" column="membertypelevel" not-null="true" type="int"/>
+        <property name="i_memberTypeCreateID" column="membertypecreateid" not-null="true" type="int"/>
+        <property name="d_memberTypeCreateDate" column="membertypecreatedate" not-null="true" type="timestamp"/>
+        <property name="i_memberTypeDeleteID" column="membertypedeleteid" not-null="false" type="int"/>
+        <property name="d_memberTypeDeleteDate" column="membertypedeletedate" not-null="false" type="timestamp"/>
+        <property name="i_memberTypeUpdateID" column="membertypeupdateid" not-null="true" type="int"/>
+        <property name="d_memberTypeUpdateDate" column="membertypeupdatedate" not-null="true" type="timestamp"/>
+        <property name="s_memberTypeActive" column="membertypeactive" not-null="true" type="string" length="1"/>
+    </class>
+</hibernate-mapping>
